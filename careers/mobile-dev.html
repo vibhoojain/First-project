@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App Developer - Career Navigator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .roadmap-list {
+            list-style: none;
+            counter-reset: roadmap-counter;
+            position: relative;
+            padding-left: 20px;
+        }
+        .roadmap-list::before {
+            content: '';
+            position: absolute;
+            left: 28px;
+            top: 10px;
+            bottom: 30px;
+            width: 2px;
+            background-color: var(--border-color);
+            z-index: 0;
+        }
+        .roadmap-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 50px;
+            z-index: 1;
+        }
+        .roadmap-item::before {
+            counter-increment: roadmap-counter;
+            content: counter(roadmap-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 2;
+            box-shadow: 0 0 0 4px var(--surface-color);
+        }
+        .roadmap-item h3 { margin-bottom: 8px; font-size: 1.25rem; }
+        .tag {
+            display: inline-block;
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0 8px 8px 0;
+            border: 1px solid #e2e8f0;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--radius);
+            margin-top: 24px;
+            box-shadow: var(--card-shadow);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-compass"></i> Career Navigator
+            </a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#careers">Careers</a></li>
+                <li><a href="../career-ai.html">Career AI</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li><a href="../request-career.html" class="btn btn-primary" style="padding: 8px 16px;">Request Career</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="hero" style="padding: 80px 0 40px;">
+            <div class="container">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; background-color: #eff6ff; color: var(--primary-color); border-radius: 16px; font-size: 2rem; margin-bottom: 24px;">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+                <h1 class="hero-title" style="margin-bottom: 16px;">Mobile App Developer</h1>
+                <p class="hero-subtitle">Design, build, and deploy engaging apps for iOS and Android.</p>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 20px;">
+            <div class="container" style="max-width: 900px;">
+                <!-- Section 1: Overview -->
+                <div class="card" style="padding: 32px; margin-bottom: 32px; border: none; box-shadow: none; border-bottom: 1px solid var(--border-color); border-radius: 0;">
+                    <h2 style="margin-bottom: 16px;"><i class="fa-solid fa-book-open" style="color: var(--primary-color); margin-right: 12px;"></i>Overview</h2>
+                    <p>Mobile App Developers create the applications we use every day on our smartphones and tablets. They work closely with designers to implement mobile UI, integrate APIs from back-end services, and ensure apps run smoothly without draining the device's battery.</p>
+                </div>
+
+                <!-- Section 2: Learning Roadmap -->
+                <div class="card" style="padding: 32px; margin-bottom: 32px; border: none; box-shadow: none; border-bottom: 1px solid var(--border-color); border-radius: 0;">
+                    <h2 style="margin-bottom: 32px;"><i class="fa-solid fa-map-location-dot" style="color: var(--primary-color); margin-right: 12px;"></i>Learning Roadmap</h2>
+                    <ol class="roadmap-list">
+                        <li class="roadmap-item">
+                            <h3>Choose a Path</h3>
+                            <p>Decide whether to learn Native development (Swift for iOS | Kotlin for Android) or Cross-platform development (React Native | Flutter) to write code once for both platforms.</p>
+                        </li>
+                        <li class="roadmap-item">
+                            <h3>Learn the Programming Language</h3>
+                            <p>Master the fundamentals of your chosen language (e.g., JavaScript/TypeScript if you selected React Native, or Dart if Flutter).</p>
+                        </li>
+                        <li class="roadmap-item">
+                            <h3>Learn the Framework & UI</h3>
+                            <p>Understand how to layout mobile screens, handle touch gestures, manage local device storage, and navigate between screens.</p>
+                        </li>
+                        <li class="roadmap-item">
+                            <h3>Build and Publish Apps</h3>
+                            <p>Create actual working apps (like a weather app, task manager, or budget tracker) and go through the process of publishing them to the Apple App Store or Google Play Store.</p>
+                        </li>
+                        <li class="roadmap-item">
+                            <h3>Apply for Jobs</h3>
+                            <p>Use the live apps on your app store profile as your portfolio when applying for mobile developer roles.</p>
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Section 3: Skills Required -->
+                <div class="card" style="padding: 32px; margin-bottom: 32px; border: none; box-shadow: none; border-bottom: 1px solid var(--border-color); border-radius: 0;">
+                    <h2 style="margin-bottom: 24px;"><i class="fa-solid fa-screwdriver-wrench" style="color: var(--primary-color); margin-right: 12px;"></i>Skills Required</h2>
+                    <div>
+                        <span class="tag">React Native / Flutter / Swift / Kotlin</span>
+                        <span class="tag">API Integration</span>
+                        <span class="tag">Mobile UI Design Principles</span>
+                        <span class="tag">Git & GitHub</span>
+                        <span class="tag">App Store Deployment</span>
+                        <span class="tag">State Management</span>
+                    </div>
+                </div>
+
+                <!-- Section 4: Earning Opportunities -->
+                <div class="card" style="padding: 32px; margin-bottom: 32px; border: none; box-shadow: none; border-bottom: 1px solid var(--border-color); border-radius: 0;">
+                    <h2 style="margin-bottom: 24px;"><i class="fa-solid fa-money-bill-wave" style="color: green; margin-right: 12px;"></i>Earning Opportunities</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+                        <div style="background: var(--bg-color); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+                            <h3 style="margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-building" style="margin-right: 8px;"></i>Tech Companies</h3>
+                            <p style="font-size: 0.95rem;">Almost every established consumer tech company needs dedicated mobile developers to maintain their app ecosystems.</p>
+                        </div>
+                        <div style="background: var(--bg-color); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+                            <h3 style="margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-laptop-house" style="margin-right: 8px;"></i>Freelance Agency</h3>
+                            <p style="font-size: 0.95rem;">Many startups and non-tech businesses outsource the development of their mobile apps to freelance developers.</p>
+                        </div>
+                        <div style="background: var(--bg-color); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+                            <h3 style="margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-rocket" style="margin-right: 8px;"></i>Indie Developer</h3>
+                            <p style="font-size: 0.95rem;">Build your own app, monetize it through ads, in-app purchases, or subscriptions, and scale it independently.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Learning Resources -->
+                <div class="card" style="padding: 32px; border: none; box-shadow: none;">
+                    <h2 style="margin-bottom: 8px;"><i class="fa-solid fa-graduation-cap" style="color: var(--primary-color); margin-right: 12px;"></i>Learning Resources</h2>
+                    <p style="margin-bottom: 24px;">Start your journey with this guide on how to become a Mobile Developer.</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/j_ZbmX2e4n0" title="How to become a mobile developer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-compass"></i> Career Navigator
+                </div>
+                <p>Helping people discover skills and career opportunities.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                    <a href="../contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

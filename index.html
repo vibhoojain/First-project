@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Navigator - Find your path</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-compass"></i> Career Navigator
+            </a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="career-ai.html">Career AI</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="request-career.html" class="btn btn-primary" style="padding: 8px 16px;">Request Career</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">Career Navigator</h1>
+                <p class="hero-subtitle">Find the right career path and learn the skills to start earning.</p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="career-ai.html" class="btn btn-primary">
+                        <i class="fa-solid fa-robot" style="margin-right: 8px;"></i> Ask Career AI
+                    </a>
+                    <a href="#careers" class="btn btn-outline">Explore Careers</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Founder Section -->
+        <section class="section" style="background-color: var(--surface-color); padding: 80px 0; border-bottom: 1px solid var(--border-color); border-top: 1px solid var(--border-color);">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <h2 class="section-title" style="margin-bottom: 32px;">Meet the Founder</h2>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 150px; height: 150px; border-radius: 50%; background-color: #e2e8f0; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 4px solid white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+                            <!-- Replace "founder-image.jpg" with the actual path to your image file -->
+                            <img src="founder-image.jpg" alt="Vibhoo Jain" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/150?text=Vibhoo+Jain'">
+                        </div>
+                        <h3 style="font-size: 1.75rem; margin-bottom: 8px; color: var(--text-main);">Vibhoo Jain</h3>
+                        <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px; font-size: 1.1rem;">Creator of Career Navigator</p>
+                        <div style="display: flex; gap: 16px; margin-bottom: 32px; justify-content: center;">
+                            <a href="https://www.instagram.com/vibhoo_jain?igsh=MWZkaXNrbG82bjhtZQ==" target="_blank" style="color: #E1306C; font-size: 1.5rem; transition: color 0.3s;" aria-label="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://in.linkedin.com/in/vibhoojain" target="_blank" style="color: #0077b5; font-size: 1.5rem; transition: color 0.3s;" aria-label="LinkedIn">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: left; color: var(--text-muted); font-size: 1.1rem; line-height: 1.7;">
+                        <p style="margin-bottom: 16px;">
+                            <strong>Vibhoo Jain</strong> is the creator of Career Navigator, a platform built to help students and beginners discover the right career paths and develop the skills needed to succeed in today's digital world.
+                        </p>
+                        <p style="margin-bottom: 16px;">
+                            With a strong interest in technology, digital learning, and career development, Vibhoo focuses on simplifying complex career decisions for students who often struggle to find clear guidance. Career Navigator was created to provide structured learning roadmaps, skill recommendations, and curated resources so that learners can move from confusion to clarity.
+                        </p>
+                        <p style="margin-bottom: 16px;">
+                            The mission behind Career Navigator is simple: make career discovery easier by bringing trusted learning resources, career roadmaps, and real-world guidance together in one place.
+                        </p>
+                        <p>
+                            Vibhoo believes that the right information at the right time can completely change someone's professional journey. Through this platform, the goal is to help people explore opportunities, build valuable skills, and start earning with confidence.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Careers Section -->
+        <section id="careers" class="section">
+            <div class="container">
+                <h2 class="section-title">Popular Careers</h2>
+                <div class="card-grid">
+                    
+                    <!-- Web Developer Card -->
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Web Developer</h3>
+                            <p class="card-description">Build modern, responsive websites and full-stack web applications using the latest technologies.</p>
+                            <a href="careers/web-developer.html" class="card-link">View Roadmap <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Data Analyst Card -->
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Data Analyst</h3>
+                            <p class="card-description">Analyze complex datasets to extract meaningful insights and help businesses make data-driven decisions.</p>
+                            <a href="careers/data-analyst.html" class="card-link">View Roadmap <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Graphic Designer Card -->
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Graphic Designer</h3>
+                            <p class="card-description">Create visual concepts and stunning graphics to communicate ideas that inspire, inform, or captivate consumers.</p>
+                            <a href="careers/graphic-designer.html" class="card-link">View Roadmap <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Video Editor Card -->
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Video Editor</h3>
+                            <p class="card-description">Assemble recorded raw material into a finished product that's suitable for broadcasting or social media.</p>
+                            <a href="careers/video-editor.html" class="card-link">View Roadmap <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+
+
+                    <!-- UI/UX Designer Card -->
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-object-group"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">UI/UX Designer</h3>
+                            <p class="card-description">Create user-friendly interfaces and design intuitive user experiences for digital products.</p>
+                            <a href="careers/ui-ux-designer.html" class="card-link">View Roadmap <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Cybersecurity Analyst Card -->
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Cybersecurity Analyst</h3>
+                            <p class="card-description">Protect an organization's computer networks and systems from digital attacks and breaches.</p>
+                            <a href="careers/cybersecurity.html" class="card-link">View Roadmap <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile App Developer Card -->
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Mobile App Developer</h3>
+                            <p class="card-description">Build native or cross-platform applications for iOS and Android smartphones and tablets.</p>
+                            <a href="careers/mobile-dev.html" class="card-link">View Roadmap <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Cloud Engineer Card -->
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-cloud"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Cloud Engineer</h3>
+                            <p class="card-description">Design, manage, and monitor infrastructure and applications hosted in the cloud (AWS, Azure, GCP).</p>
+                            <a href="careers/cloud-engineer.html" class="card-link">View Roadmap <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-compass"></i> Career Navigator
+                </div>
+                <p>Helping people discover skills and career opportunities.</p>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career AI - Career Navigator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .chat-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--surface-color);
+            border-radius: var(--radius);
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+        }
+        
+        .chat-header {
+            padding: 20px;
+            background-color: #f8fafc;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ai-avatar {
+            width: 48px;
+            height: 48px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .message {
+            display: flex;
+            gap: 16px;
+            max-width: 80%;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .message-content {
+            padding: 16px;
+            border-radius: 12px;
+            line-height: 1.5;
+        }
+
+        .message.ai .message-content {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.user .message-content {
+            background-color: var(--primary-color);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-input-container {
+            padding: 20px;
+            background-color: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            gap: 12px;
+            position: relative;
+        }
+
+        .chat-input {
+            flex-grow: 1;
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .chat-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .send-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.25rem;
+        }
+
+        .send-btn:hover {
+            background-color: var(--primary-hover);
+            transform: scale(1.05);
+        }
+
+        .send-btn:disabled {
+            background-color: #cbd5e1;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .suggestion-chips {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chip:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-compass"></i> Career Navigator
+            </a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#careers">Careers</a></li>
+                <li><a href="career-ai.html" style="color: var(--primary-color); font-weight: 600;">Career AI</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="request-career.html" class="btn btn-primary" style="padding: 8px 16px;">Request Career</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="section" style="padding-top: 40px; padding-bottom: 40px;">
+            <div class="container">
+                <h1 class="section-title" style="margin-bottom: 8px;">Career AI Assistant</h1>
+                <p style="text-align: center; margin-bottom: 32px; color: var(--text-muted);">Ask me anything about finding the right career, learning skills, or earning online.</p>
+                
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <div class="ai-avatar">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div>
+                            <h3 style="margin: 0; font-size: 1.1rem;">Navi</h3>
+                            <p style="margin: 0; font-size: 0.85rem; color: #10b981;">● Online</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message ai">
+                            <div class="message-content">
+                                Hi there! I'm Navi, your AI career guide. I can help you discover career paths based on your interests, suggest learning resources, or explain how to monetize your skills. How can I help you today?
+                            </div>
+                        </div>
+
+                        <div class="suggestion-chips" id="suggestion-chips">
+                            <button class="chip">What career should I choose?</button>
+                            <button class="chip">How do I become a web developer?</button>
+                            <button class="chip">What skills should I learn to earn online?</button>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-container">
+                        <form id="chat-form" class="chat-input-wrapper">
+                            <input type="text" id="chat-input" class="chat-input" placeholder="Type your career question here..." autocomplete="off">
+                            <button type="submit" class="send-btn" id="send-btn" disabled>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatForm = document.getElementById('chat-form');
+            const chatInput = document.getElementById('chat-input');
+            const sendBtn = document.getElementById('send-btn');
+            const chatMessages = document.getElementById('chat-messages');
+            const suggestionChips = document.getElementById('suggestion-chips');
+
+            // Enable/disable send button based on input
+            chatInput.addEventListener('input', () => {
+                sendBtn.disabled = chatInput.value.trim() === '';
+            });
+
+            // Handle suggestion chips click
+            document.querySelectorAll('.chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const text = chip.textContent;
+                    chatInput.value = text;
+                    sendBtn.disabled = false;
+                    chatForm.dispatchEvent(new Event('submit'));
+                    // Hide chips after first use
+                    if (suggestionChips) suggestionChips.style.display = 'none';
+                });
+            });
+
+            // Handle form submission
+            chatForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const messageText = chatInput.value.trim();
+                if (!messageText) return;
+
+                // Hide chips
+                if (suggestionChips) suggestionChips.style.display = 'none';
+
+                // Add user message
+                appendMessage('user', messageText);
+                chatInput.value = '';
+                sendBtn.disabled = true;
+
+                // Simulate AI typing indicator
+                const typingId = 'typing-' + Date.now();
+                appendTypingIndicator(typingId);
+                
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                // Simulate delay then AI response
+                setTimeout(() => {
+                    removeTypingIndicator(typingId);
+                    const aiResponse = generateMockResponse(messageText);
+                    appendMessage('ai', aiResponse);
+                }, 1500);
+            });
+
+            function appendMessage(sender, text) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `message ${sender}`;
+                
+                let contentHTML = `<div class="message-content">${text}</div>`;
+                msgDiv.innerHTML = contentHTML;
+                
+                chatMessages.appendChild(msgDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function appendTypingIndicator(id) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'message ai typing-indicator';
+                msgDiv.id = id;
+                msgDiv.innerHTML = `
+                    <div class="message-content" style="display: flex; gap: 4px; padding: 20px;">
+                        <span style="width: 8px; height: 8px; background: #94a3b8; border-radius: 50%; display: inline-block; animation: bounce 1.4s infinite ease-in-out both;"></span>
+                        <span style="width: 8px; height: 8px; background: #94a3b8; border-radius: 50%; display: inline-block; animation: bounce 1.4s infinite ease-in-out both; animation-delay: 0.2s;"></span>
+                        <span style="width: 8px; height: 8px; background: #94a3b8; border-radius: 50%; display: inline-block; animation: bounce 1.4s infinite ease-in-out both; animation-delay: 0.4s;"></span>
+                    </div>
+                `;
+                chatMessages.appendChild(msgDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function removeTypingIndicator(id) {
+                const indicator = document.getElementById(id);
+                if (indicator) {
+                    indicator.remove();
+                }
+            }
+
+            // Simple mock logical responses for demo
+            function generateMockResponse(query) {
+                const q = query.toLowerCase();
+                
+                if (q.includes('choose') || q.includes('which career')) {
+                    return "Choosing a career depends on your interests! If you enjoy logic and problem-solving, consider **Data Analysis** or **Web Development**. If you're more visual and creative, **Graphic Design** or **Video Editing** might be a great fit. What are some of your hobbies?";
+                } else if (q.includes('web dev') || q.includes('web developer')) {
+                    return "To become a web developer, you should start by learning HTML, CSS, and JavaScript. I highly recommend checking out our <a href='careers/web-developer.html' style='color: var(--primary-color); font-weight: bold;'>Web Developer Roadmap</a> for a step-by-step guide and beginner tutorials!";
+                } else if (q.includes('earn') || q.includes('money') || q.includes('freelance')) {
+                    return "There are many ways to earn online securely! You can work full-time remotely for global companies, or you can freelance on platforms like Upwork and Fiverr. High-demand freelancing skills include Web Development, Video Editing, and Graphic Design. Would you like to explore one of those?";
+                } else if (q.includes('data') || q.includes('analyst')) {
+                    return "Data analysis is a highly rewarding field. You'll want to master Excel, learn SQL to query databases, and use tools like Tableau to visualize data. You can see the full roadmap on our <a href='careers/data-analyst.html' style='color: var(--primary-color); font-weight: bold;'>Data Analyst Career Page</a>.";
+                } else if (q.includes('hello') || q.includes('hi ')) {
+                    return "Hello! How can I assist you with your career journey today?";
+                } else {
+                    return "That's a great question. While I'm just a demo AI at the moment, I exist to help you navigate your career path. I recommend exploring our 'Careers' section from the home page to see structured roadmaps for popular fields!";
+                }
+            }
+        });
+    </script>
+    <style>
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+</body>
+</html>
