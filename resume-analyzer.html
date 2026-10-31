@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Resume Analyzer - Career Navigator 2.0</title>
+    <meta name="description" content="Free ATS Resume Compatibility Analyzer. Check keyword density, section formatting, quantifiable impact, and job description alignment.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .analyzer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .drop-zone {
+            border: 2px dashed var(--border-color);
+            background: var(--bg-surface-elevated);
+            border-radius: var(--radius-lg);
+            padding: 48px 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .drop-zone:hover, .drop-zone.dragover {
+            border-color: var(--primary-color);
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .drop-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+
+        .file-hidden-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .selected-file-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            margin-top: 16px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .input-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            background: var(--primary-light);
+        }
+
+        /* Results Display */
+        .results-container {
+            display: none;
+            flex-direction: column;
+            gap: 28px;
+            animation: fadeInResults 0.4s ease-out;
+        }
+
+        @keyframes fadeInResults {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .score-hero-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 36px;
+            align-items: center;
+            box-shadow: var(--card-shadow);
+        }
+
+        .score-dial {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 8px solid var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 0 25px var(--primary-glow);
+        }
+
+        .score-dial-number {
+            font-size: 3.25rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--text-main);
+        }
+
+        .score-dial-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+        }
+
+        .score-bars-col {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .breakdown-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .breakdown-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .breakdown-track {
+            width: 100%;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .breakdown-fill {
+            height: 100%;
+            border-radius: var(--radius-full);
+            background: var(--gradient-brand);
+            transition: width 0.6s ease;
+        }
+
+        .rec-item {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 14px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .rec-item.critical { border-left-color: #ef4444; }
+        .rec-item.high { border-left-color: #f59e0b; }
+        .rec-item.medium { border-left-color: var(--primary-color); }
+
+        .disclaimer-banner {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            line-height: 1.5;
+        }
+
+        .disclaimer-banner i {
+            color: #f59e0b;
+            font-size: 1.1rem;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .score-hero-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon-wrap">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <span>Career Navigator</span>
+                <span class="logo-badge">2.0</span>
+            </a>
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#careers" class="nav-link">Careers</a></li>
+                <li><a href="career-ai.html" class="nav-link">Career AI</a></li>
+                <li><a href="resume-analyzer.html" class="nav-link active">ATS Analyzer</a></li>
+                <li><a href="resume-builder.html" class="nav-link">Resume Builder</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="request-career.html" class="nav-link">Request Career</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle dark/light theme">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <a href="index.html#careers" class="btn btn-primary btn-sm">Explore Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="section-sm">
+            <div class="container">
+                <div class="section-header" style="margin-bottom: 36px;">
+                    <span class="section-tag">
+                        <i class="fa-solid fa-file-shield"></i> ATS Resume Compatibility
+                    </span>
+                    <h1 class="section-title">Free ATS <span class="gradient-text">Resume Analyzer</span></h1>
+                    <p class="section-subtitle">
+                        Evaluate how automated applicant tracking systems parse your resume. Check keyword density, section readability, action verbs, and quantifiable impact.
+                    </p>
+                </div>
+
+                <div class="analyzer-grid">
+                    
+                    <!-- Input Section Card -->
+                    <div class="card" style="padding: 36px;">
+                        <div class="input-tabs">
+                            <button class="tab-btn active" id="tab-upload"><i class="fa-solid fa-file-arrow-up"></i> Upload Document (.pdf / .docx)</button>
+                            <button class="tab-btn" id="tab-paste"><i class="fa-solid fa-align-left"></i> Paste Plain Text</button>
+                        </div>
+
+                        <!-- Tab 1: File Upload -->
+                        <div id="upload-panel">
+                            <div class="drop-zone" id="drop-zone">
+                                <input type="file" id="resume-file" class="file-hidden-input" accept=".pdf,.docx,.doc,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                                <i class="fa-solid fa-cloud-arrow-up drop-icon"></i>
+                                <h3 style="font-size: 1.25rem; margin-bottom: 6px;">Drop your resume here or click to browse</h3>
+                                <p style="font-size: 0.9rem; margin-bottom: 0;">Supports PDF and Word (.docx) files up to 5MB. Processed securely in-memory.</p>
+                                <div id="selected-file-display" style="display: none;">
+                                    <div class="selected-file-pill">
+                                        <i class="fa-solid fa-file-lines" style="color: var(--primary-color);"></i>
+                                        <span id="file-name-text">filename.pdf</span>
+                                        <i class="fa-solid fa-circle-check" style="color: var(--accent-green); margin-left: 4px;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: Text Paste -->
+                        <div id="paste-panel" style="display: none;">
+                            <label for="resume-text" class="form-label">Paste Your Resume Text</label>
+                            <textarea id="resume-text" class="form-control" style="min-height: 200px;" placeholder="Paste the text of your resume here..."></textarea>
+                        </div>
+
+                        <!-- Optional Job Description Matching -->
+                        <div style="margin-top: 24px;">
+                            <label for="job-desc" class="form-label" style="display: flex; justify-content: space-between;">
+                                <span>Target Job Description (Optional)</span>
+                                <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">Compares keyword density</span>
+                            </label>
+                            <textarea id="job-desc" class="form-control" style="min-height: 100px;" placeholder="Paste the target job description or requirements to see your match percentage and missing keywords..."></textarea>
+                        </div>
+
+                        <button id="analyze-btn" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 24px;">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i> Run Comprehensive ATS Audit
+                        </button>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div id="loading-state" class="card" style="padding: 48px; text-align: center; display: none;">
+                        <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                        <h3 id="loading-msg" style="margin-bottom: 8px;">Parsing resume document in-memory...</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Checking section headers, keyword frequencies, and quantifiable impact metrics.</p>
+                    </div>
+
+                    <!-- Results Dashboard -->
+                    <div id="results-container" class="results-container">
+                        
+                        <!-- Disclaimer Banner -->
+                        <div class="disclaimer-banner">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <div>
+                                <strong>ATS Compatibility Estimate Disclaimer:</strong> This score is calculated via automated algorithmic parsing against industry best practices. It does not represent an official score from any employer's proprietary ATS (such as Workday, Taleo, or Greenhouse).
+                            </div>
+                        </div>
+
+                        <!-- Score Hero Card -->
+                        <div class="score-hero-card">
+                            <div class="score-dial" id="score-dial">
+                                <span class="score-dial-number" id="overall-score-num">--</span>
+                                <span class="score-dial-label">ATS Score</span>
+                            </div>
+
+                            <div class="score-bars-col">
+                                <h3 style="font-size: 1.4rem; margin-bottom: 4px;">Compatibility Breakdown</h3>
+                                
+                                <div class="breakdown-row">
+                                    <div class="breakdown-header">
+                                        <span>Section Completeness</span>
+                                        <span id="score-sections">0 / 25</span>
+                                    </div>
+                                    <div class="breakdown-track">
+                                        <div class="breakdown-fill" id="bar-sections" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="breakdown-row">
+                                    <div class="breakdown-header">
+                                        <span>Quantifiable Impact &amp; Metrics</span>
+                                        <span id="score-impact">0 / 25</span>
+                                    </div>
+                                    <div class="breakdown-track">
+                                        <div class="breakdown-fill" id="bar-impact" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="breakdown-row">
+                                    <div class="breakdown-header">
+                                        <span>Formatting &amp; Word Length</span>
+                                        <span id="score-format">0 / 25</span>
+                                    </div>
+                                    <div class="breakdown-track">
+                                        <div class="breakdown-fill" id="bar-format" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="breakdown-row">
+                                    <div class="breakdown-header">
+                                        <span>Skills &amp; Keywords Density</span>
+                                        <span id="score-skills">0 / 25</span>
+                                    </div>
+                                    <div class="breakdown-track">
+                                        <div class="breakdown-fill" id="bar-skills" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job Description Match Box (if JD was provided) -->
+                        <div id="jd-match-card" class="card" style="padding: 32px; display: none;">
+                            <h3 style="font-size: 1.3rem; margin-bottom: 12px;">
+                                <i class="fa-solid fa-bullseye" style="color: var(--primary-color); margin-right: 8px;"></i>
+                                Job Description Keyword Match: <span id="jd-percentage" style="color: var(--primary-color);">0%</span>
+                            </h3>
+                            <div style="margin-bottom: 16px;">
+                                <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: var(--accent-green);"><i class="fa-solid fa-check"></i> Matched Keywords:</h4>
+                                <div id="jd-matched-pills" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: #ef4444;"><i class="fa-solid fa-xmark"></i> Missing Key Competencies:</h4>
+                                <div id="jd-missing-pills" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Recommendations Card -->
+                        <div class="card" style="padding: 36px;">
+                            <h3 style="font-size: 1.35rem; margin-bottom: 20px;">
+                                <i class="fa-solid fa-clipboard-check" style="color: var(--primary-color); margin-right: 8px;"></i>
+                                Actionable Improvement Recommendations
+                            </h3>
+                            <div id="recommendations-list"></div>
+                        </div>
+
+                        <!-- Detected Skills & Keywords -->
+                        <div class="card" style="padding: 36px;">
+                            <h3 style="font-size: 1.35rem; margin-bottom: 16px;">
+                                <i class="fa-solid fa-tags" style="color: var(--primary-color); margin-right: 8px;"></i>
+                                Detected Technical &amp; Professional Keywords
+                            </h3>
+                            <div id="keywords-pill-list" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
+                        </div>
+
+                        <!-- Download Analysis Action -->
+                        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 12px;">
+                            <button id="download-report-btn" class="btn btn-secondary">
+                                <i class="fa-solid fa-download"></i> Download Full Analysis (.txt)
+                            </button>
+                            <a href="career-ai.html" class="btn btn-primary">
+                                <i class="fa-solid fa-robot"></i> Ask Navi to Improve Resume Bullets
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modern Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon-wrap">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <span>Career Navigator</span>
+                        <span class="logo-badge">2.0</span>
+                    </a>
+                    <p>Empowering learners worldwide with structured roadmaps, skill blueprints, and practical guidance.</p>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Career Roadmaps</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="careers/web-developer.html">Web Developer</a></li>
+                        <li><a href="careers/data-analyst.html">Data Analyst</a></li>
+                        <li><a href="careers/ui-ux-designer.html">UI/UX Designer</a></li>
+                        <li><a href="careers/cloud-engineer.html">Cloud Engineer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Tools</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="resume-analyzer.html">ATS Resume Analyzer</a></li>
+                        <li><a href="resume-builder.html">AI Resume Builder</a></li>
+                        <li><a href="career-ai.html">Career AI Assistant</a></li>
+                        <li><a href="request-career.html">Request a Role</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Platform</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Vibhoo</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Career Navigator 2.0. Created by Vibhoo Jain.</p>
+                <div style="display: flex; gap: 20px;">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabUpload = document.getElementById('tab-upload');
+            const tabPaste = document.getElementById('tab-paste');
+            const uploadPanel = document.getElementById('upload-panel');
+            const pastePanel = document.getElementById('paste-panel');
+            
+            const fileInput = document.getElementById('resume-file');
+            const fileDisplay = document.getElementById('selected-file-display');
+            const fileNameText = document.getElementById('file-name-text');
+            const resumeTextInput = document.getElementById('resume-text');
+            const jobDescInput = document.getElementById('job-desc');
+            const analyzeBtn = document.getElementById('analyze-btn');
+            
+            const loadingState = document.getElementById('loading-state');
+            const resultsContainer = document.getElementById('results-container');
+            const downloadBtn = document.getElementById('download-report-btn');
+
+            let currentAnalysisData = null;
+
+            // Tabs toggling
+            tabUpload.addEventListener('click', () => {
+                tabUpload.classList.add('active');
+                tabPaste.classList.remove('active');
+                uploadPanel.style.display = 'block';
+                pastePanel.style.display = 'none';
+            });
+
+            tabPaste.addEventListener('click', () => {
+                tabPaste.classList.add('active');
+                tabUpload.classList.remove('active');
+                uploadPanel.style.display = 'none';
+                pastePanel.style.display = 'block';
+            });
+
+            // File selection
+            fileInput.addEventListener('change', (e) => {
+                if (fileInput.files.length > 0) {
+                    const file = fileInput.files[0];
+                    fileNameText.textContent = `${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+                    fileDisplay.style.display = 'block';
+                }
+            });
+
+            // Drag and drop events
+            const dropZone = document.getElementById('drop-zone');
+            ['dragenter', 'dragover'].forEach(name => {
+                dropZone.addEventListener(name, (e) => {
+                    e.preventDefault();
+                    dropZone.classList.add('dragover');
+                });
+            });
+            ['dragleave', 'drop'].forEach(name => {
+                dropZone.addEventListener(name, (e) => {
+                    e.preventDefault();
+                    dropZone.classList.remove('dragover');
+                });
+            });
+
+            // Analyze action
+            analyzeBtn.addEventListener('click', async () => {
+                const isUploadTab = tabUpload.classList.contains('active');
+                const hasFile = fileInput.files.length > 0;
+                const hasText = resumeTextInput.value.trim().length > 50;
+
+                if (isUploadTab && !hasFile) {
+                    alert('Please select a PDF or Word document (.docx) to analyze.');
+                    return;
+                }
+
+                if (!isUploadTab && !hasText) {
+                    alert('Please paste at least 50 characters of your resume text.');
+                    return;
+                }
+
+                // Show loading
+                loadingState.style.display = 'block';
+                resultsContainer.style.display = 'none';
+                analyzeBtn.disabled = true;
+
+                try {
+                    let response;
+                    if (isUploadTab && hasFile) {
+                        const formData = new FormData();
+                        formData.append('resumeFile', fileInput.files[0]);
+                        if (jobDescInput.value.trim()) {
+                            formData.append('jobDescription', jobDescInput.value.trim());
+                        }
+
+                        response = await fetch('/api/analyze-resume', {
+                            method: 'POST',
+                            body: formData
+                        });
+                    } else {
+                        response = await fetch('/api/analyze-resume', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                resumeText: resumeTextInput.value.trim(),
+                                jobDescription: jobDescInput.value.trim()
+                            })
+                        });
+                    }
+
+                    const data = await response.json();
+                    loadingState.style.display = 'none';
+                    analyzeBtn.disabled = false;
+
+                    if (!response.ok || !data.success) {
+                        alert(data.error || 'Failed to analyze resume.');
+                        return;
+                    }
+
+                    currentAnalysisData = data.analysis;
+                    renderAnalysisResults(data.analysis);
+
+                } catch (err) {
+                    loadingState.style.display = 'none';
+                    analyzeBtn.disabled = false;
+                    console.error('Analysis error:', err);
+                    alert('Failed to connect to the analysis service. Please try again.');
+                }
+            });
+
+            function renderAnalysisResults(analysis) {
+                // 1. Overall Score
+                document.getElementById('overall-score-num').textContent = analysis.overallScore;
+                
+                // Colorize dial based on score
+                const dial = document.getElementById('score-dial');
+                if (analysis.overallScore >= 75) {
+                    dial.style.borderColor = 'var(--accent-green)';
+                } else if (analysis.overallScore >= 50) {
+                    dial.style.borderColor = '#f59e0b';
+                } else {
+                    dial.style.borderColor = '#ef4444';
+                }
+
+                // 2. Score breakdown bars
+                const sb = analysis.scoringBreakdown;
+                document.getElementById('score-sections').textContent = `${sb.sectionCompleteness.score} / ${sb.sectionCompleteness.max}`;
+                document.getElementById('bar-sections').style.width = `${(sb.sectionCompleteness.score / sb.sectionCompleteness.max) * 100}%`;
+
+                document.getElementById('score-impact').textContent = `${sb.quantifiableImpact.score} / ${sb.quantifiableImpact.max}`;
+                document.getElementById('bar-impact').style.width = `${(sb.quantifiableImpact.score / sb.quantifiableImpact.max) * 100}%`;
+
+                document.getElementById('score-format').textContent = `${sb.formattingAndLength.score} / ${sb.formattingAndLength.max}`;
+                document.getElementById('bar-format').style.width = `${(sb.formattingAndLength.score / sb.formattingAndLength.max) * 100}%`;
+
+                document.getElementById('score-skills').textContent = `${sb.skillsAndKeywords.score} / ${sb.skillsAndKeywords.max}`;
+                document.getElementById('bar-skills').style.width = `${(sb.skillsAndKeywords.score / sb.skillsAndKeywords.max) * 100}%`;
+
+                // 3. Job Description Match Card
+                const jdCard = document.getElementById('jd-match-card');
+                if (analysis.jobDescriptionMatch) {
+                    jdCard.style.display = 'block';
+                    document.getElementById('jd-percentage').textContent = `${analysis.jobDescriptionMatch.matchPercentage}%`;
+                    
+                    const matchedPills = document.getElementById('jd-matched-pills');
+                    matchedPills.innerHTML = analysis.jobDescriptionMatch.matchedKeywords.length
+                        ? analysis.jobDescriptionMatch.matchedKeywords.map(k => `<span class="tag" style="background: var(--accent-green-light); color: var(--accent-green); border-color: var(--accent-green);">${k}</span>`).join('')
+                        : '<span style="color: var(--text-muted); font-size: 0.9rem;">None detected</span>';
+
+                    const missingPills = document.getElementById('jd-missing-pills');
+                    missingPills.innerHTML = analysis.jobDescriptionMatch.missingKeywords.length
+                        ? analysis.jobDescriptionMatch.missingKeywords.map(k => `<span class="tag" style="background: rgba(239, 68, 68, 0.12); color: #ef4444; border-color: #ef4444;">${k}</span>`).join('')
+                        : '<span style="color: var(--text-muted); font-size: 0.9rem;">All key terms present!</span>';
+                } else {
+                    jdCard.style.display = 'none';
+                }
+
+                // 4. Recommendations List
+                const recList = document.getElementById('recommendations-list');
+                recList.innerHTML = '';
+                if (analysis.recommendations.length === 0) {
+                    recList.innerHTML = '<p style="color: var(--accent-green);"><i class="fa-solid fa-circle-check"></i> Great job! Your resume meets key ATS parsing standards.</p>';
+                } else {
+                    analysis.recommendations.forEach(rec => {
+                        const div = document.createElement('div');
+                        div.className = `rec-item ${rec.type}`;
+                        div.innerHTML = `
+                            <h4 style="margin: 0 0 6px; font-size: 1.05rem; color: var(--text-main);">${rec.title}</h4>
+                            <p style="margin: 0; font-size: 0.925rem; color: var(--text-muted);">${rec.message}</p>
+                        `;
+                        recList.appendChild(div);
+                    });
+                }
+
+                // 5. Keywords Tag List
+                const kwList = document.getElementById('keywords-pill-list');
+                kwList.innerHTML = analysis.detectedKeywords.length
+                    ? analysis.detectedKeywords.map(kw => `<span class="tag">${kw}</span>`).join('')
+                    : '<span style="color: var(--text-muted);">No common technical keywords identified. Consider adding specific industry technologies.</span>';
+
+                resultsContainer.style.display = 'flex';
+                resultsContainer.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // Download Report
+            downloadBtn.addEventListener('click', () => {
+                if (!currentAnalysisData) return;
+
+                const textReport = `========================================================================
+CAREER NAVIGATOR 2.0 — ATS RESUME AUDIT REPORT
+========================================================================
+Analyzed Date: ${new Date().toLocaleString()}
+Overall ATS Compatibility Score: ${currentAnalysisData.overallScore} / 100
+
+${currentAnalysisData.disclaimer}
+
+------------------------------------------------------------------------
+SCORING BREAKDOWN:
+------------------------------------------------------------------------
+- Section Completeness:      ${currentAnalysisData.scoringBreakdown.sectionCompleteness.score} / 25
+- Quantifiable Impact:        ${currentAnalysisData.scoringBreakdown.quantifiableImpact.score} / 25
+- Formatting & Word Length:   ${currentAnalysisData.scoringBreakdown.formattingAndLength.score} / 25
+- Skills & Keyword Density:   ${currentAnalysisData.scoringBreakdown.skillsAndKeywords.score} / 25
+
+------------------------------------------------------------------------
+DOCUMENT METRICS:
+------------------------------------------------------------------------
+- Total Word Count:           ${currentAnalysisData.documentStats.wordCount} words
+- Bullet Points Detected:     ${currentAnalysisData.documentStats.bulletPointsFound}
+- Dynamic Action Verbs Found: ${currentAnalysisData.documentStats.actionVerbsCount}
+- Quantifiable Metrics Found: ${currentAnalysisData.documentStats.metricsIdentified.length}
+
+------------------------------------------------------------------------
+DETECTED KEYWORDS:
+------------------------------------------------------------------------
+${currentAnalysisData.detectedKeywords.join(', ') || 'None'}
+
+------------------------------------------------------------------------
+ACTIONABLE IMPROVEMENTS:
+------------------------------------------------------------------------
+${currentAnalysisData.recommendations.map((r, i) => `${i + 1}. [${r.type.toUpperCase()}] ${r.title}\n   ${r.message}`).join('\n\n')}
+
+========================================================================
+Report generated by Career Navigator 2.0 (Created by Vibhoo Jain)
+https://career-navigator.vercel.app/
+========================================================================`;
+
+                const blob = new Blob([textReport], { type: 'text/plain;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `CareerNavigator_ATS_Analysis_${Date.now()}.txt`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        });
+    </script>
+</body>
+</html>

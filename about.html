@@ -1,89 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Career Navigator</title>
+    <title>About Career Navigator 2.0 - Mission & Founder</title>
+    <meta name="description" content="Learn about Career Navigator and its founder, Vibhoo Jain, dedicated to helping students and beginners navigate digital careers with clarity.">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <i class="fa-solid fa-compass"></i> Career Navigator
+                <div class="logo-icon-wrap">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <span>Career Navigator</span>
+                <span class="logo-badge">2.0</span>
             </a>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
             </button>
+
             <ul class="nav-links" id="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#careers">Careers</a></li>
-                <li><a href="career-ai.html">Career AI</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="request-career.html" class="btn btn-primary" style="padding: 8px 16px;">Request Career</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#careers" class="nav-link">Careers</a></li>
+                <li><a href="career-ai.html" class="nav-link">Career AI</a></li>
+                <li><a href="resume-analyzer.html" class="nav-link">ATS Analyzer</a></li>
+                <li><a href="resume-builder.html" class="nav-link">Resume Builder</a></li>
+                <li><a href="index.html#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="request-career.html" class="nav-link">Request Career</a></li>
             </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle dark/light theme">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <a href="index.html#careers" class="btn btn-primary btn-sm">Explore Free</a>
+            </div>
         </div>
     </nav>
 
     <main class="main-content">
-        <section class="section" style="padding-top: 60px;">
+        <!-- Hero Section -->
+        <section class="section-sm" style="text-align: center; padding-top: 60px;">
             <div class="container">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <h1 class="section-title">About Career Navigator</h1>
-                    
-                    <div class="card" style="padding: 40px; margin-bottom: 40px; text-align: center; border: none; background: transparent; box-shadow: none;">
-                        <p style="font-size: 1.25rem; color: var(--text-main); font-weight: 500;">
-                            Helping people discover clear career paths, learn practical skills, and find earning opportunities.
-                        </p>
+                <span class="section-tag">
+                    <i class="fa-solid fa-compass"></i> Our Mission
+                </span>
+                <h1 class="section-title">Bridging the Gap Between <br><span class="gradient-text">Ambition & Direction</span></h1>
+                <p class="section-subtitle" style="max-width: 700px; margin: 0 auto;">
+                    Helping students and beginners discover clear career paths, master practical high-demand skills, and unlock real-world earning opportunities.
+                </p>
+            </div>
+        </section>
+
+        <!-- Mission Highlights Grid -->
+        <section class="section-sm" style="padding-top: 10px;">
+            <div class="container">
+                <div class="resource-grid" style="margin-bottom: 56px;">
+                    <div class="resource-card">
+                        <div class="resource-icon-wrap">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Zero Ambiguity</h3>
+                            <p style="font-size: 0.95rem;">Clear step-by-step roadmaps showing what to learn, in what order, and where to find top free tutorials.</p>
+                        </div>
                     </div>
 
-                    <div class="card" style="padding: 40px;">
-                        <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                            <div style="width: 150px; height: 150px; border-radius: 50%; background-color: #e2e8f0; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 4px solid white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
-                                <!-- Replace "founder-image.jpg" with the actual path to your image file -->
-                                <img src="founder-image.jpg" alt="Vibhoo Jain" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/150?text=Your+Photo'">
-                            </div>
-                            <h2 style="margin-bottom: 8px;">Vibhoo Jain</h2>
-                            <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px;">Founder</p>
-                            <div style="display: flex; gap: 16px; margin-bottom: 24px; justify-content: center;">
-                                <a href="https://www.instagram.com/vibhoo_jain?igsh=MWZkaXNrbG82bjhtZQ==" target="_blank" style="color: #E1306C; font-size: 1.5rem; transition: color 0.3s;" aria-label="Instagram">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                                <a href="https://in.linkedin.com/in/vibhoojain" target="_blank" style="color: #0077b5; font-size: 1.5rem; transition: color 0.3s;" aria-label="LinkedIn">
-                                    <i class="fa-brands fa-linkedin"></i>
-                                </a>
-                            </div>
-                            <p>
-                                Vibhoo Jain created Career Navigator to simplify career decisions and provide structured learning paths for students and beginners.
-                            </p>
+                    <div class="resource-card">
+                        <div class="resource-icon-wrap">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
                         </div>
+                        <div>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Monetization Focus</h3>
+                            <p style="font-size: 0.95rem;">Actionable guides on freelancing, full-time remote roles, and building digital products with your skills.</p>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon-wrap">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 8px;">100% Free Access</h3>
+                            <p style="font-size: 0.95rem;">No paywalls or expensive subscriptions—accessible education for anyone with an internet connection.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Founder Profile Card (Faithfully Preserving All Original Details) -->
+                <div class="founder-card">
+                    <div class="founder-photo-col">
+                        <div class="founder-photo-wrapper">
+                            <img src="founder-image.jpg" alt="Vibhoo Jain" class="founder-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80'">
+                        </div>
+                        <h2 style="font-size: 1.6rem; margin-bottom: 4px; color: var(--text-main);">Vibhoo Jain</h2>
+                        <p style="color: var(--primary-color); font-weight: 600; font-size: 0.95rem; margin-bottom: 14px;">Founder &amp; Creator</p>
+                        <div class="founder-socials">
+                            <a href="https://www.instagram.com/vibhoo_jain?igsh=MWZkaXNrbG82bjhtZQ==" target="_blank" rel="noopener noreferrer" class="founder-social-btn instagram" aria-label="Vibhoo Jain on Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://in.linkedin.com/in/vibhoojain" target="_blank" rel="noopener noreferrer" class="founder-social-btn linkedin" aria-label="Vibhoo Jain on LinkedIn">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
+                        <h3 style="color: var(--text-main); margin-bottom: 12px; font-size: 1.35rem;">A Message from Vibhoo</h3>
+                        <p style="margin-bottom: 16px;">
+                            <strong>Vibhoo Jain</strong> created Career Navigator to simplify career decisions and provide structured learning paths for students and beginners who often struggle to find clear guidance in a rapidly shifting digital economy.
+                        </p>
+                        <p style="margin-bottom: 16px;">
+                            With a strong interest in technology, digital learning, and career development, Vibhoo focuses on taking the overwhelm out of professional discovery. Career Navigator was created to provide structured learning roadmaps, skill recommendations, and curated resources so that learners can move from confusion to clarity.
+                        </p>
+                        <p style="margin-bottom: 16px;">
+                            The mission behind Career Navigator is simple: make career discovery easier by bringing trusted learning resources, career roadmaps, and real-world guidance together in one place.
+                        </p>
+                        <p>
+                            Vibhoo believes that the right information at the right time can completely change someone's professional journey. Through this platform, the goal is to help people explore opportunities, build valuable skills, and start earning with confidence.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Modern Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fa-solid fa-compass"></i> Career Navigator
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon-wrap">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <span>Career Navigator</span>
+                        <span class="logo-badge">2.0</span>
+                    </a>
+                    <p>Empowering learners worldwide with structured roadmaps, skill blueprints, and practical guidance.</p>
                 </div>
-                <p>Helping people discover skills and career opportunities.</p>
-                <div class="footer-links">
+                <div>
+                    <h4 class="footer-col-title">Career Roadmaps</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="careers/web-developer.html">Web Developer</a></li>
+                        <li><a href="careers/data-analyst.html">Data Analyst</a></li>
+                        <li><a href="careers/ui-ux-designer.html">UI/UX Designer</a></li>
+                        <li><a href="careers/cloud-engineer.html">Cloud Engineer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Explore</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="careers/cybersecurity.html">Cybersecurity</a></li>
+                        <li><a href="careers/mobile-dev.html">Mobile App Developer</a></li>
+                        <li><a href="careers/video-editor.html">Video Editor</a></li>
+                        <li><a href="request-career.html">Request New Role</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Platform &amp; Tools</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="career-ai.html">Navi AI Assistant</a></li>
+                        <li><a href="resume-analyzer.html">ATS Resume Analyzer</a></li>
+                        <li><a href="resume-builder.html">AI Resume Builder</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Career Navigator 2.0. Created by Vibhoo Jain.</p>
+                <div style="display: flex; gap: 20px;">
                     <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
                     <a href="contact.html">Contact</a>
+                    <a href="request-career.html">Request Guide</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="main.js"></script>
 </body>
 </html>

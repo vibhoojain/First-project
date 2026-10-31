@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/career-ai",
+      "destination": "/career-ai.html"
+    },
+    {
+      "source": "/resume-analyzer",
+      "destination": "/resume-analyzer.html"
+    },
+    {
+      "source": "/resume-builder",
+      "destination": "/resume-builder.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/request-career",
+      "destination": "/request-career.html"
+    }
+  ]
+}

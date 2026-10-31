@@ -1,188 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analyst - Career Navigator</title>
+    <title>Data Analyst Roadmap - Career Navigator 2.0</title>
+    <meta name="description" content="Step-by-step roadmap to become a Data Analyst, learn SQL, Python, Excel, and PowerBI, and start earning.">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../style.css">
-    <style>
-        .roadmap-list {
-            list-style: none;
-            counter-reset: roadmap-counter;
-            position: relative;
-            padding-left: 20px;
-        }
-        .roadmap-list::before {
-            content: '';
-            position: absolute;
-            left: 28px;
-            top: 10px;
-            bottom: 30px;
-            width: 2px;
-            background-color: var(--border-color);
-            z-index: 0;
-        }
-        .roadmap-item {
-            position: relative;
-            margin-bottom: 30px;
-            padding-left: 50px;
-            z-index: 1;
-        }
-        .roadmap-item::before {
-            counter-increment: roadmap-counter;
-            content: counter(roadmap-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 32px;
-            height: 32px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            z-index: 2;
-            box-shadow: 0 0 0 4px var(--surface-color);
-        }
-        .roadmap-item h3 { margin-bottom: 8px; font-size: 1.25rem; }
-        .tag {
-            display: inline-block;
-            background-color: #f1f5f9;
-            color: #475569;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin: 0 8px 8px 0;
-            border: 1px solid #e2e8f0;
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            overflow: hidden;
-            border-radius: var(--radius);
-            margin-top: 24px;
-            box-shadow: var(--card-shadow);
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
 </head>
 <body>
+    <!-- Top Navigation Bar -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="../index.html" class="logo">
-                <i class="fa-solid fa-compass"></i> Career Navigator
+                <div class="logo-icon-wrap">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <span>Career Navigator</span>
+                <span class="logo-badge">2.0</span>
             </a>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
             </button>
+
             <ul class="nav-links" id="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../index.html#careers">Careers</a></li>
-                <li><a href="../career-ai.html">Career AI</a></li>
-                <li><a href="../about.html">About</a></li>
-                <li><a href="../contact.html">Contact</a></li>
-                <li><a href="../request-career.html" class="btn btn-primary" style="padding: 8px 16px;">Request Career</a></li>
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html#careers" class="nav-link active">Careers</a></li>
+                <li><a href="../career-ai.html" class="nav-link">Career AI</a></li>
+                <li><a href="../resume-analyzer.html" class="nav-link">ATS Analyzer</a></li>
+                <li><a href="../resume-builder.html" class="nav-link">Resume Builder</a></li>
+                <li><a href="../index.html#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="../about.html" class="nav-link">About</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+                <li><a href="../request-career.html" class="nav-link">Request Career</a></li>
             </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle dark/light theme">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <a href="../index.html#careers" class="btn btn-outline btn-sm">All Careers</a>
+            </div>
         </div>
     </nav>
 
     <main class="main-content">
-        <section class="hero" style="padding: 80px 0 40px;">
+        <!-- Career Role Hero -->
+        <section class="hero" style="padding: 70px 0 40px;">
             <div class="container">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; background-color: #eff6ff; color: var(--primary-color); border-radius: 16px; font-size: 2rem; margin-bottom: 24px;">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 68px; height: 68px; background: var(--gradient-brand-subtle); color: var(--primary-color); border: 1px solid var(--border-color); border-radius: 18px; font-size: 2rem; margin-bottom: 20px; box-shadow: var(--card-shadow);">
                     <i class="fa-solid fa-chart-line"></i>
                 </div>
-                <h1 class="hero-title" style="margin-bottom: 16px;">Data Analyst</h1>
-                <p class="hero-subtitle">Transform raw data into meaningful insights.</p>
+                <h1 class="hero-title" style="margin-bottom: 12px;">Data Analyst</h1>
+                <p class="hero-subtitle" style="margin-bottom: 16px;">Transform raw datasets into actionable insights and strategic business decisions.</p>
+                
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+                    <span class="tag" style="background: var(--bg-surface-elevated); margin: 0;"><i class="fa-solid fa-clock" style="color: var(--primary-color); margin-right: 6px;"></i>Est. Duration: 4–6 Months</span>
+                    <span class="tag" style="background: var(--bg-surface-elevated); margin: 0;"><i class="fa-solid fa-signal" style="color: var(--accent-purple); margin-right: 6px;"></i>Difficulty: Moderate</span>
+                    <span class="tag" style="background: var(--bg-surface-elevated); margin: 0;"><i class="fa-solid fa-chart-line" style="color: var(--accent-green); margin-right: 6px;"></i>High Growth Track</span>
+                </div>
+
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#roadmap" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-list-check"></i> View Roadmap
+                    </a>
+                    <a href="../career-ai.html" class="btn btn-secondary btn-sm">
+                        <i class="fa-solid fa-robot"></i> Ask Navi About Data
+                    </a>
+                    <a href="../resume-builder.html" class="btn btn-outline btn-sm">
+                        <i class="fa-solid fa-file-invoice"></i> Build Resume
+                    </a>
+                </div>
             </div>
         </section>
 
-        <section class="section" style="padding-top: 20px;">
+        <section class="section" style="padding-top: 10px;">
             <div class="container" style="max-width: 900px;">
+                
+                <!-- Interactive Learning Progress Bar -->
+                <div class="roadmap-progress-bar-wrap" data-career-id="data-analyst">
+                    <div class="progress-header">
+                        <span><i class="fa-solid fa-trophy" style="color: #eab308; margin-right: 8px;"></i> Your Milestone Progress</span>
+                        <span class="progress-percent" style="color: var(--primary-color);">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); display: flex; justify-content: space-between;">
+                        <span class="progress-completed-count">0 of 5 milestones completed</span>
+                        <span>Saved locally</span>
+                    </div>
+                </div>
+
                 <!-- Section 1: Overview -->
-                <div class="card" style="padding: 32px; margin-bottom: 32px; border: none; box-shadow: none; border-bottom: 1px solid var(--border-color); border-radius: 0;">
-                    <h2 style="margin-bottom: 16px;"><i class="fa-solid fa-book-open" style="color: var(--primary-color); margin-right: 12px;"></i>Overview</h2>
+                <div class="card" style="padding: 36px; margin-bottom: 32px;">
+                    <h2 style="margin-bottom: 16px; font-size: 1.5rem;"><i class="fa-solid fa-book-open" style="color: var(--primary-color); margin-right: 12px;"></i>Role Overview</h2>
                     <p>Data Analysts review data to identify key insights and trends. They use statistical methods and visualization tools to translate numbers into plain English, helping businesses make informed, strategic decisions.</p>
                 </div>
 
-                <!-- Section 2: Learning Roadmap -->
-                <div class="card" style="padding: 32px; margin-bottom: 32px; border: none; box-shadow: none; border-bottom: 1px solid var(--border-color); border-radius: 0;">
-                    <h2 style="margin-bottom: 32px;"><i class="fa-solid fa-map-location-dot" style="color: var(--primary-color); margin-right: 12px;"></i>Learning Roadmap</h2>
+                <!-- Section 2: Learning Roadmap with Checkboxes -->
+                <div class="card" id="roadmap" style="padding: 36px; margin-bottom: 32px;">
+                    <h2 style="margin-bottom: 28px; font-size: 1.5rem;"><i class="fa-solid fa-map-location-dot" style="color: var(--primary-color); margin-right: 12px;"></i>Step-by-Step Learning Roadmap</h2>
+                    
                     <ol class="roadmap-list">
+                        <!-- Step 1 -->
                         <li class="roadmap-item">
-                            <h3>Learn Basic Tools</h3>
-                            <p>Get extremely comfortable with Excel/Google Sheets. Learn functions like VLOOKUP, Pivot Tables, and conditional formatting.</p>
+                            <div class="roadmap-step-badge">1</div>
+                            <div class="roadmap-item-card">
+                                <label class="step-checkbox-row">
+                                    <input type="checkbox" class="step-checkbox" aria-label="Mark milestone 1 complete">
+                                    <h3 style="font-size: 1.25rem; margin: 0;">Learn Basic Tools (Excel &amp; Sheets)</h3>
+                                </label>
+                                <p style="margin: 0; font-size: 0.95rem;">Get extremely comfortable with Excel and Google Sheets. Master functions like XLOOKUP/VLOOKUP, Pivot Tables, conditional formatting, and power queries.</p>
+                            </div>
                         </li>
+
+                        <!-- Step 2 -->
                         <li class="roadmap-item">
-                            <h3>Learn Core Skills</h3>
-                            <p>Study SQL to query databases. Learn Python or R for more advanced data manipulation and statistical analysis.</p>
+                            <div class="roadmap-step-badge">2</div>
+                            <div class="roadmap-item-card">
+                                <label class="step-checkbox-row">
+                                    <input type="checkbox" class="step-checkbox" aria-label="Mark milestone 2 complete">
+                                    <h3 style="font-size: 1.25rem; margin: 0;">Master SQL &amp; Database Querying</h3>
+                                </label>
+                                <p style="margin: 0; font-size: 0.95rem;">Study SQL to query relational databases. Master SELECT, JOINs, GROUP BY, aggregations, subqueries, and window functions.</p>
+                            </div>
                         </li>
+
+                        <!-- Step 3 -->
                         <li class="roadmap-item">
-                            <h3>Learn Visualization</h3>
-                            <p>Familiarize yourself with tools like Tableau, Power BI, or Python libraries (Matplotlib, Seaborn) to create dashboards.</p>
+                            <div class="roadmap-step-badge">3</div>
+                            <div class="roadmap-item-card">
+                                <label class="step-checkbox-row">
+                                    <input type="checkbox" class="step-checkbox" aria-label="Mark milestone 3 complete">
+                                    <h3 style="font-size: 1.25rem; margin: 0;">Learn Business Intelligence &amp; Visualization</h3>
+                                </label>
+                                <p style="margin: 0; font-size: 0.95rem;">Familiarize yourself with tools like Tableau or Power BI. Learn to build interactive dashboards that communicate clear narratives to non-technical stakeholders.</p>
+                            </div>
                         </li>
+
+                        <!-- Step 4 -->
                         <li class="roadmap-item">
-                            <h3>Create a Portfolio</h3>
-                            <p>Find free datasets on Kaggle. Clean the data, analyze it, and build interactive dashboards to showcase your findings.</p>
+                            <div class="roadmap-step-badge">4</div>
+                            <div class="roadmap-item-card">
+                                <label class="step-checkbox-row">
+                                    <input type="checkbox" class="step-checkbox" aria-label="Mark milestone 4 complete">
+                                    <h3 style="font-size: 1.25rem; margin: 0;">Build Kaggle Projects &amp; Portfolio</h3>
+                                </label>
+                                <p style="margin: 0; font-size: 0.95rem;">Find free public datasets on Kaggle. Clean the data, uncover interesting correlations, document your insights, and publish case studies on GitHub and LinkedIn.</p>
+                            </div>
                         </li>
+
+                        <!-- Step 5 -->
                         <li class="roadmap-item">
-                            <h3>Apply for Jobs or Freelancing</h3>
-                            <p>Apply for entry-level analyst roles to help companies optimize their operations and understand their customers.</p>
+                            <div class="roadmap-step-badge">5</div>
+                            <div class="roadmap-item-card">
+                                <label class="step-checkbox-row">
+                                    <input type="checkbox" class="step-checkbox" aria-label="Mark milestone 5 complete">
+                                    <h3 style="font-size: 1.25rem; margin: 0;">Apply for Junior Analyst Roles</h3>
+                                </label>
+                                <p style="margin: 0; font-size: 0.95rem;">Apply for entry-level analyst roles in marketing, finance, or operations, or take on freelance dashboard setup gigs on Upwork.</p>
+                            </div>
                         </li>
                     </ol>
                 </div>
 
                 <!-- Section 3: Skills Required -->
-                <div class="card" style="padding: 32px; margin-bottom: 32px; border: none; box-shadow: none; border-bottom: 1px solid var(--border-color); border-radius: 0;">
-                    <h2 style="margin-bottom: 24px;"><i class="fa-solid fa-screwdriver-wrench" style="color: var(--primary-color); margin-right: 12px;"></i>Skills Required</h2>
+                <div class="card" style="padding: 36px; margin-bottom: 32px;">
+                    <h2 style="margin-bottom: 20px; font-size: 1.5rem;"><i class="fa-solid fa-screwdriver-wrench" style="color: var(--primary-color); margin-right: 12px;"></i>Skills Required</h2>
                     <div>
-                        <span class="tag">Microsoft Excel</span>
-                        <span class="tag">SQL</span>
-                        <span class="tag">Data Visualization (Tableau/Power BI)</span>
-                        <span class="tag">Python / R</span>
-                        <span class="tag">Analytical Thinking</span>
-                        <span class="tag">Statistics</span>
+                        <span class="tag">Advanced Excel</span>
+                        <span class="tag">SQL &amp; Relational DBs</span>
+                        <span class="tag">Tableau / Power BI</span>
+                        <span class="tag">Python (Pandas, Matplotlib)</span>
+                        <span class="tag">Data Storytelling</span>
+                        <span class="tag">Applied Statistics</span>
                     </div>
                 </div>
 
                 <!-- Section 4: Earning Opportunities -->
-                <div class="card" style="padding: 32px; margin-bottom: 32px; border: none; box-shadow: none; border-bottom: 1px solid var(--border-color); border-radius: 0;">
-                    <h2 style="margin-bottom: 24px;"><i class="fa-solid fa-money-bill-wave" style="color: green; margin-right: 12px;"></i>Earning Opportunities</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
-                        <div style="background: var(--bg-color); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
-                            <h3 style="margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-building" style="margin-right: 8px;"></i>Full-time Jobs</h3>
-                            <p style="font-size: 0.95rem;">Almost every medium-to-large business needs data analysts in marketing, finance, or operations.</p>
+                <div class="card" style="padding: 36px; margin-bottom: 32px;">
+                    <h2 style="margin-bottom: 24px; font-size: 1.5rem;"><i class="fa-solid fa-money-bill-wave" style="color: var(--accent-green); margin-right: 12px;"></i>Earning Opportunities</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+                        <div style="background: var(--bg-surface-elevated); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+                            <h3 style="margin-bottom: 8px; font-size: 1.1rem;"><i class="fa-solid fa-building" style="margin-right: 8px; color: var(--primary-color);"></i>Full-time Jobs</h3>
+                            <p style="font-size: 0.925rem; margin: 0;">Virtually every modern company needs data analysts across marketing, operations, and product analytics.</p>
                         </div>
-                        <div style="background: var(--bg-color); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
-                            <h3 style="margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-laptop-house" style="margin-right: 8px;"></i>Freelancing</h3>
-                            <p style="font-size: 0.95rem;">Many startups hire freelance consultants to set up their analytics dashboards or perform one-off data audits.</p>
+                        <div style="background: var(--bg-surface-elevated); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+                            <h3 style="margin-bottom: 8px; font-size: 1.1rem;"><i class="fa-solid fa-laptop-house" style="margin-right: 8px; color: var(--accent-purple);"></i>Freelancing</h3>
+                            <p style="font-size: 0.925rem; margin: 0;">Startups and SMBs hire freelance data specialists to build dashboard templates and automate reporting spreadsheets.</p>
                         </div>
-                        <div style="background: var(--bg-color); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
-                            <h3 style="margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-globe" style="margin-right: 8px;"></i>Remote Work</h3>
-                            <p style="font-size: 0.95rem;">Analyzing data can easily be done from a laptop, making this an excellent remote career.</p>
+                        <div style="background: var(--bg-surface-elevated); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+                            <h3 style="margin-bottom: 8px; font-size: 1.1rem;"><i class="fa-solid fa-globe" style="margin-right: 8px; color: var(--accent-green);"></i>Remote Work</h3>
+                            <p style="font-size: 0.925rem; margin: 0;">Data analysis is naturally suited to async remote work, opening access to international companies.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Section 5: Learning Resources -->
-                <div class="card" style="padding: 32px; border: none; box-shadow: none;">
-                    <h2 style="margin-bottom: 8px;"><i class="fa-solid fa-graduation-cap" style="color: var(--primary-color); margin-right: 12px;"></i>Learning Resources</h2>
-                    <p style="margin-bottom: 24px;">Start your journey with this beginner-friendly tutorial.</p>
+                <div class="card" style="padding: 36px;">
+                    <h2 style="margin-bottom: 8px; font-size: 1.5rem;"><i class="fa-solid fa-graduation-cap" style="color: var(--primary-color); margin-right: 12px;"></i>Free Learning Tutorial</h2>
+                    <p style="margin-bottom: 20px; font-size: 0.95rem;">Begin your data journey with this structured, beginner-friendly analytics masterclass.</p>
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/fDzZq6Z1KHg" title="Data Analyst Tutorial for Beginners" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
@@ -191,14 +217,48 @@
         </section>
     </main>
 
+    <!-- Modern Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fa-solid fa-compass"></i> Career Navigator
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <div class="logo-icon-wrap">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <span>Career Navigator</span>
+                        <span class="logo-badge">2.0</span>
+                    </a>
+                    <p>Empowering learners worldwide with structured roadmaps, skill blueprints, and practical guidance.</p>
                 </div>
-                <p>Helping people discover skills and career opportunities.</p>
-                <div class="footer-links">
+                <div>
+                    <h4 class="footer-col-title">Related Pathways</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="cloud-engineer.html">Cloud Engineer</a></li>
+                        <li><a href="cybersecurity.html">Cybersecurity</a></li>
+                        <li><a href="web-developer.html">Web Developer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Explore</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="ui-ux-designer.html">UI/UX Designer</a></li>
+                        <li><a href="video-editor.html">Video Editor</a></li>
+                        <li><a href="../career-ai.html">Career AI</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Platform</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About Vibhoo</a></li>
+                        <li><a href="../contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Career Navigator 2.0. Created by Vibhoo Jain.</p>
+                <div style="display: flex; gap: 20px;">
                     <a href="../index.html">Home</a>
                     <a href="../about.html">About</a>
                     <a href="../contact.html">Contact</a>
@@ -207,6 +267,7 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="../main.js"></script>
 </body>
 </html>

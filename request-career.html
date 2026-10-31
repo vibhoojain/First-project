@@ -1,73 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Career - Career Navigator</title>
+    <title>Request a Career Guide - Career Navigator 2.0</title>
+    <meta name="description" content="Request a new career roadmap or learning guide to be added to Career Navigator 2.0.">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <i class="fa-solid fa-compass"></i> Career Navigator
+                <div class="logo-icon-wrap">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <span>Career Navigator</span>
+                <span class="logo-badge">2.0</span>
             </a>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
             </button>
+
             <ul class="nav-links" id="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#careers">Careers</a></li>
-                <li><a href="career-ai.html">Career AI</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="request-career.html" class="btn btn-primary" style="padding: 8px 16px;">Request Career</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#careers" class="nav-link">Careers</a></li>
+                <li><a href="career-ai.html" class="nav-link">Career AI</a></li>
+                <li><a href="resume-analyzer.html" class="nav-link">ATS Analyzer</a></li>
+                <li><a href="resume-builder.html" class="nav-link">Resume Builder</a></li>
+                <li><a href="index.html#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="request-career.html" class="nav-link active">Request Career</a></li>
             </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle dark/light theme">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <a href="index.html#careers" class="btn btn-primary btn-sm">Explore Free</a>
+            </div>
         </div>
     </nav>
 
     <main class="main-content">
         <section class="section" style="padding-top: 60px;">
             <div class="container">
-                <h1 class="section-title">Request a Career Guide</h1>
+                <div class="section-header">
+                    <span class="section-tag">
+                        <i class="fa-solid fa-lightbulb"></i> Community Requests
+                    </span>
+                    <h1 class="section-title">Request a <span class="gradient-text">Career Roadmap</span></h1>
+                    <p class="section-subtitle">
+                        Don't see your desired profession listed? Tell us what career guide you'd like to see, and our team will research and publish a complete milestone roadmap for it.
+                    </p>
+                </div>
                 
                 <div class="form-container">
-                    <p style="text-align: center; margin-bottom: 24px;">Don't see your desired career listed? Let us know and we'll work on creating a roadmap for it.</p>
-                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Request submitted successfully!');">
+                    <form id="request-form">
                         <div class="form-group">
-                            <label for="career-name" class="form-label">Career Name</label>
-                            <input type="text" id="career-name" name="career-name" class="form-control" placeholder="e.g. Prompt Engineer, AI Researcher" required>
+                            <label for="career-name" class="form-label">Desired Career or Role Name</label>
+                            <input type="text" id="career-name" name="career-name" class="form-control" placeholder="e.g. AI Prompt Engineer, DevOps Specialist, Blockchain Dev" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
+                            <label for="email" class="form-label">Your Email Address</label>
                             <input type="email" id="email" name="email" class="form-control" placeholder="your@email.com" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="reason" class="form-label">Reason for requesting this career guide</label>
-                            <textarea id="reason" name="reason" class="form-control" placeholder="Why are you interested in this career?" required></textarea>
+                            <label for="reason" class="form-label">Why are you interested in this career guide?</label>
+                            <textarea id="reason" name="reason" class="form-control" placeholder="What specific skills or guidance would help you most?" required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
+                        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%;">
+                            <i class="fa-solid fa-paper-plane"></i> Submit Career Request
+                        </button>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Modern Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fa-solid fa-compass"></i> Career Navigator
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon-wrap">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <span>Career Navigator</span>
+                        <span class="logo-badge">2.0</span>
+                    </a>
+                    <p>Empowering learners worldwide with structured roadmaps, skill blueprints, and practical guidance.</p>
                 </div>
-                <p>Helping people discover skills and career opportunities.</p>
-                <div class="footer-links">
+                <div>
+                    <h4 class="footer-col-title">Career Roadmaps</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="careers/web-developer.html">Web Developer</a></li>
+                        <li><a href="careers/data-analyst.html">Data Analyst</a></li>
+                        <li><a href="careers/ui-ux-designer.html">UI/UX Designer</a></li>
+                        <li><a href="careers/cloud-engineer.html">Cloud Engineer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Explore</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="careers/cybersecurity.html">Cybersecurity</a></li>
+                        <li><a href="careers/mobile-dev.html">Mobile App Developer</a></li>
+                        <li><a href="careers/video-editor.html">Video Editor</a></li>
+                        <li><a href="request-career.html">Request New Role</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Platform &amp; Tools</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="career-ai.html">Navi AI Assistant</a></li>
+                        <li><a href="resume-analyzer.html">ATS Resume Analyzer</a></li>
+                        <li><a href="resume-builder.html">AI Resume Builder</a></li>
+                        <li><a href="about.html">About Vibhoo</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Career Navigator 2.0. Created by Vibhoo Jain.</p>
+                <div style="display: flex; gap: 20px;">
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
                     <a href="contact.html">Contact</a>
@@ -76,6 +145,27 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="main.js"></script>
+    <script>
+        document.getElementById('request-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Request Submitted!';
+                showToast('Thank you! Your career request has been queued for research and publication.', 'success');
+                this.reset();
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }, 3000);
+            }, 800);
+        });
+    </script>
 </body>
 </html>

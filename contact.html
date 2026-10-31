@@ -1,80 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Career Navigator</title>
+    <title>Contact Us - Career Navigator 2.0</title>
+    <meta name="description" content="Get in touch with the Career Navigator team for questions, partnerships, or feedback.">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <i class="fa-solid fa-compass"></i> Career Navigator
+                <div class="logo-icon-wrap">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <span>Career Navigator</span>
+                <span class="logo-badge">2.0</span>
             </a>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
             </button>
+
             <ul class="nav-links" id="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#careers">Careers</a></li>
-                <li><a href="career-ai.html">Career AI</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="request-career.html" class="btn btn-primary" style="padding: 8px 16px;">Request Career</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#careers" class="nav-link">Careers</a></li>
+                <li><a href="career-ai.html" class="nav-link">Career AI</a></li>
+                <li><a href="resume-analyzer.html" class="nav-link">ATS Analyzer</a></li>
+                <li><a href="resume-builder.html" class="nav-link">Resume Builder</a></li>
+                <li><a href="index.html#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="request-career.html" class="nav-link">Request Career</a></li>
             </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle dark/light theme">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <a href="index.html#careers" class="btn btn-primary btn-sm">Explore Free</a>
+            </div>
         </div>
     </nav>
 
     <main class="main-content">
         <section class="section" style="padding-top: 60px;">
             <div class="container">
-                <h1 class="section-title">Contact Us</h1>
+                <div class="section-header">
+                    <span class="section-tag">
+                        <i class="fa-regular fa-envelope"></i> Get In Touch
+                    </span>
+                    <h1 class="section-title">We'd Love to <span class="gradient-text">Hear From You</span></h1>
+                    <p class="section-subtitle">
+                        Have questions about a career roadmap, feedback on Navi AI, or partnership inquiries? Send us a message and we'll reply promptly.
+                    </p>
+                </div>
                 
                 <div class="form-container">
-                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+                    <form id="contact-form">
                         <div class="form-group">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Your name" required>
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="e.g. Alex Sharma" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="your@email.com" required>
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="alex@example.com" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea id="message" name="message" class="form-control" placeholder="How can we help you?" required></textarea>
+                            <label for="message" class="form-label">How can we assist you?</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Describe your question or feedback..." required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%;">
+                            <i class="fa-regular fa-paper-plane"></i> Send Message
+                        </button>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Modern Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fa-solid fa-compass"></i> Career Navigator
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon-wrap">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <span>Career Navigator</span>
+                        <span class="logo-badge">2.0</span>
+                    </a>
+                    <p>Empowering learners worldwide with structured roadmaps, skill blueprints, and practical guidance.</p>
                 </div>
-                <p>Helping people discover skills and career opportunities.</p>
-                <div class="footer-links">
+                <div>
+                    <h4 class="footer-col-title">Career Roadmaps</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="careers/web-developer.html">Web Developer</a></li>
+                        <li><a href="careers/data-analyst.html">Data Analyst</a></li>
+                        <li><a href="careers/ui-ux-designer.html">UI/UX Designer</a></li>
+                        <li><a href="careers/cloud-engineer.html">Cloud Engineer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Explore</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="careers/cybersecurity.html">Cybersecurity</a></li>
+                        <li><a href="careers/mobile-dev.html">Mobile App Developer</a></li>
+                        <li><a href="careers/video-editor.html">Video Editor</a></li>
+                        <li><a href="request-career.html">Request New Role</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Platform &amp; Tools</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="career-ai.html">Navi AI Assistant</a></li>
+                        <li><a href="resume-analyzer.html">ATS Resume Analyzer</a></li>
+                        <li><a href="resume-builder.html">AI Resume Builder</a></li>
+                        <li><a href="about.html">About Vibhoo</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Career Navigator 2.0. Created by Vibhoo Jain.</p>
+                <div style="display: flex; gap: 20px;">
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="request-career.html">Request Guide</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="main.js"></script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message Sent!';
+                showToast('Thank you! Your message has been received. Vibhoo and the team will get back to you shortly.', 'success');
+                this.reset();
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }, 3000);
+            }, 800);
+        });
+    </script>
 </body>
 </html>

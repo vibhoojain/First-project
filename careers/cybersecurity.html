@@ -1,188 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity Analyst - Career Navigator</title>
+    <title>Cybersecurity Analyst Roadmap - Career Navigator 2.0</title>
+    <meta name="description" content="Step-by-step roadmap to become a Cybersecurity Analyst, learn networking, Linux, CompTIA Security+, and ethical hacking.">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../style.css">
-    <style>
-        .roadmap-list {
-            list-style: none;
-            counter-reset: roadmap-counter;
-            position: relative;
-            padding-left: 20px;
-        }
-        .roadmap-list::before {
-            content: '';
-            position: absolute;
-            left: 28px;
-            top: 10px;
-            bottom: 30px;
-            width: 2px;
-            background-color: var(--border-color);
-            z-index: 0;
-        }
-        .roadmap-item {
-            position: relative;
-            margin-bottom: 30px;
-            padding-left: 50px;
-            z-index: 1;
-        }
-        .roadmap-item::before {
-            counter-increment: roadmap-counter;
-            content: counter(roadmap-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 32px;
-            height: 32px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            z-index: 2;
-            box-shadow: 0 0 0 4px var(--surface-color);
-        }
-        .roadmap-item h3 { margin-bottom: 8px; font-size: 1.25rem; }
-        .tag {
-            display: inline-block;
-            background-color: #f1f5f9;
-            color: #475569;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin: 0 8px 8px 0;
-            border: 1px solid #e2e8f0;
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: var(--radius);
-            margin-top: 24px;
-            box-shadow: var(--card-shadow);
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
 </head>
 <body>
+    <!-- Top Navigation Bar -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="../index.html" class="logo">
-                <i class="fa-solid fa-compass"></i> Career Navigator
+                <div class="logo-icon-wrap">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <span>Career Navigator</span>
+                <span class="logo-badge">2.0</span>
             </a>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
             </button>
+
             <ul class="nav-links" id="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../index.html#careers">Careers</a></li>
-                <li><a href="../career-ai.html">Career AI</a></li>
-                <li><a href="../about.html">About</a></li>
-                <li><a href="../contact.html">Contact</a></li>
-                <li><a href="../request-career.html" class="btn btn-primary" style="padding: 8px 16px;">Request Career</a></li>
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html#careers" class="nav-link active">Careers</a></li>
+                <li><a href="../career-ai.html" class="nav-link">Career AI</a></li>
+                <li><a href="../resume-analyzer.html" class="nav-link">ATS Analyzer</a></li>
+                <li><a href="../resume-builder.html" class="nav-link">Resume Builder</a></li>
+                <li><a href="../index.html#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="../about.html" class="nav-link">About</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+                <li><a href="../request-career.html" class="nav-link">Request Career</a></li>
             </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle dark/light theme">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <a href="../index.html#careers" class="btn btn-outline btn-sm">All Careers</a>
+            </div>
         </div>
     </nav>
 
     <main class="main-content">
-        <section class="hero" style="padding: 80px 0 40px;">
+        <!-- Career Role Hero -->
+        <section class="hero" style="padding: 70px 0 40px;">
             <div class="container">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; background-color: #eff6ff; color: var(--primary-color); border-radius: 16px; font-size: 2rem; margin-bottom: 24px;">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 68px; height: 68px; background: var(--gradient-brand-subtle); color: var(--primary-color); border: 1px solid var(--border-color); border-radius: 18px; font-size: 2rem; margin-bottom: 20px; box-shadow: var(--card-shadow);">
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
-                <h1 class="hero-title" style="margin-bottom: 16px;">Cybersecurity Analyst</h1>
-                <p class="hero-subtitle">Protect infrastructure, networks, and data from digital attacks.</p>
+                <h1 class="hero-title" style="margin-bottom: 12px;">Cybersecurity Analyst</h1>
+                <p class="hero-subtitle" style="margin-bottom: 16px;">Defend computer networks, cloud infrastructure, and sensitive data against digital threats and breaches.</p>
+                
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+                    <span class="tag" style="background: var(--bg-surface-elevated); margin: 0;"><i class="fa-solid fa-clock" style="color: var(--primary-color); margin-right: 6px;"></i>Est. Duration: 6–9 Months</span>
+                    <span class="tag" style="background: var(--bg-surface-elevated); margin: 0;"><i class="fa-solid fa-user-shield" style="color: var(--accent-purple); margin-right: 6px;"></i>Difficulty: Technical / Rigorous</span>
+                    <span class="tag" style="background: var(--bg-surface-elevated); margin: 0;"><i class="fa-solid fa-lock" style="color: var(--accent-green); margin-right: 6px;"></i>Mission-Critical Demand</span>
+                </div>
+
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#roadmap" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-list-check"></i> View Roadmap
+                    </a>
+                    <a href="../career-ai.html" class="btn btn-secondary btn-sm">
+                        <i class="fa-solid fa-robot"></i> Ask Navi About Security
+                    </a>
+                    <a href="../resume-builder.html" class="btn btn-outline btn-sm">
+                        <i class="fa-solid fa-file-invoice"></i> Build Resume
+                    </a>
+                </div>
             </div>
         </section>
 
-        <section class="section" style="padding-top: 20px;">
+        <section class="section" style="padding-top: 10px;">
             <div class="container" style="max-width: 900px;">
+                
+                <!-- Interactive Learning Progress Bar -->
+                <div class="roadmap-progress-bar-wrap" data-career-id="cybersecurity">
+                    <div class="progress-header">
+                        <span><i class="fa-solid fa-trophy" style="color: #eab308; margin-right: 8px;"></i> Your Milestone Progress</span>
+                        <span class="progress-percent" style="color: var(--primary-color);">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); display: flex; justify-content: space-between;">
+                        <span class="progress-completed-count">0 of 5 milestones completed</span>
+                        <span>Saved locally</span>
+                    </div>
+                </div>
+
                 <!-- Section 1: Overview -->
-                <div class="card" style="padding: 32px; margin-bottom: 32px; border: none; box-shadow: none; border-bottom: 1px solid var(--border-color); border-radius: 0;">
-                    <h2 style="margin-bottom: 16px;"><i class="fa-solid fa-book-open" style="color: var(--primary-color); margin-right: 12px;"></i>Overview</h2>
+                <div class="card" style="padding: 36px; margin-bottom: 32px;">
+                    <h2 style="margin-bottom: 16px; font-size: 1.5rem;"><i class="fa-solid fa-book-open" style="color: var(--primary-color); margin-right: 12px;"></i>Role Overview</h2>
                     <p>Cybersecurity Analysts are the digital bodyguards of an organization. They monitor networks for security breaches, investigate violations, install security software, and simulate attacks to find vulnerabilities before actual hackers do.</p>
                 </div>
 
-                <!-- Section 2: Learning Roadmap -->
-                <div class="card" style="padding: 32px; margin-bottom: 32px; border: none; box-shadow: none; border-bottom: 1px solid var(--border-color); border-radius: 0;">
-                    <h2 style="margin-bottom: 32px;"><i class="fa-solid fa-map-location-dot" style="color: var(--primary-color); margin-right: 12px;"></i>Learning Roadmap</h2>
+                <!-- Section 2: Learning Roadmap with Checkboxes -->
+                <div class="card" id="roadmap" style="padding: 36px; margin-bottom: 32px;">
+                    <h2 style="margin-bottom: 28px; font-size: 1.5rem;"><i class="fa-solid fa-map-location-dot" style="color: var(--primary-color); margin-right: 12px;"></i>Step-by-Step Learning Roadmap</h2>
+                    
                     <ol class="roadmap-list">
+                        <!-- Step 1 -->
                         <li class="roadmap-item">
-                            <h3>Learn IT Fundamentals</h3>
-                            <p>Understand how computers, operating systems (especially Linux and Windows), and hardware work together.</p>
+                            <div class="roadmap-step-badge">1</div>
+                            <div class="roadmap-item-card">
+                                <label class="step-checkbox-row">
+                                    <input type="checkbox" class="step-checkbox" aria-label="Mark milestone 1 complete">
+                                    <h3 style="font-size: 1.25rem; margin: 0;">Learn IT &amp; Operating System Fundamentals</h3>
+                                </label>
+                                <p style="margin: 0; font-size: 0.95rem;">Understand how computer architectures, CPU processes, memory registers, file systems, and operating systems (Linux terminal and Windows Active Directory) interact.</p>
+                            </div>
                         </li>
+
+                        <!-- Step 2 -->
                         <li class="roadmap-item">
-                            <h3>Learn Computer Networking</h3>
-                            <p>Master TCP/IP, subnets, routers, firewalls, and how data physically moves across the internet.</p>
+                            <div class="roadmap-step-badge">2</div>
+                            <div class="roadmap-item-card">
+                                <label class="step-checkbox-row">
+                                    <input type="checkbox" class="step-checkbox" aria-label="Mark milestone 2 complete">
+                                    <h3 style="font-size: 1.25rem; margin: 0;">Master Computer Networking (OSI &amp; TCP/IP)</h3>
+                                </label>
+                                <p style="margin: 0; font-size: 0.95rem;">Master TCP/IP protocols, subnetting, DNS, HTTP/HTTPS, routing tables, firewalls, and Wireshark packet capture analysis.</p>
+                            </div>
                         </li>
+
+                        <!-- Step 3 -->
                         <li class="roadmap-item">
-                            <h3>Learn Security Core Concepts</h3>
-                            <p>Study risk management, cryptography, access controls, and common attack types (phishing, malware, DDoS).</p>
+                            <div class="roadmap-step-badge">3</div>
+                            <div class="roadmap-item-card">
+                                <label class="step-checkbox-row">
+                                    <input type="checkbox" class="step-checkbox" aria-label="Mark milestone 3 complete">
+                                    <h3 style="font-size: 1.25rem; margin: 0;">Learn Core Security Concepts &amp; Attack Vectors</h3>
+                                </label>
+                                <p style="margin: 0; font-size: 0.95rem;">Study defense-in-depth, cryptography (symmetric/asymmetric encryption, hashing), access controls, and common attack types (phishing, SQL injection, XSS, DDoS, ransomware).</p>
+                            </div>
                         </li>
+
+                        <!-- Step 4 -->
                         <li class="roadmap-item">
-                            <h3>Earn Certifications</h3>
-                            <p>Prepare for and pass the CompTIA Security+ certification. This is the gold standard for entry-level cybersecurity roles.</p>
+                            <div class="roadmap-step-badge">4</div>
+                            <div class="roadmap-item-card">
+                                <label class="step-checkbox-row">
+                                    <input type="checkbox" class="step-checkbox" aria-label="Mark milestone 4 complete">
+                                    <h3 style="font-size: 1.25rem; margin: 0;">Earn CompTIA Security+ Certification</h3>
+                                </label>
+                                <p style="margin: 0; font-size: 0.95rem;">Prepare for and pass the CompTIA Security+ examination. This is recognized globally as the gold standard baseline for junior security analyst positions.</p>
+                            </div>
                         </li>
+
+                        <!-- Step 5 -->
                         <li class="roadmap-item">
-                            <h3>Practice in Virtual Labs</h3>
-                            <p>Use platforms like TryHackMe or HackTheBox to practice defending and attacking simulated network environments safely.</p>
+                            <div class="roadmap-step-badge">5</div>
+                            <div class="roadmap-item-card">
+                                <label class="step-checkbox-row">
+                                    <input type="checkbox" class="step-checkbox" aria-label="Mark milestone 5 complete">
+                                    <h3 style="font-size: 1.25rem; margin: 0;">Practice in Hands-on Virtual Labs</h3>
+                                </label>
+                                <p style="margin: 0; font-size: 0.95rem;">Complete defensive and offensive challenges on TryHackMe, Hack The Box, and Blue Team Labs to prove your practical capability to hiring managers.</p>
+                            </div>
                         </li>
                     </ol>
                 </div>
 
                 <!-- Section 3: Skills Required -->
-                <div class="card" style="padding: 32px; margin-bottom: 32px; border: none; box-shadow: none; border-bottom: 1px solid var(--border-color); border-radius: 0;">
-                    <h2 style="margin-bottom: 24px;"><i class="fa-solid fa-screwdriver-wrench" style="color: var(--primary-color); margin-right: 12px;"></i>Skills Required</h2>
+                <div class="card" style="padding: 36px; margin-bottom: 32px;">
+                    <h2 style="margin-bottom: 20px; font-size: 1.5rem;"><i class="fa-solid fa-screwdriver-wrench" style="color: var(--primary-color); margin-right: 12px;"></i>Skills Required</h2>
                     <div>
-                        <span class="tag">Network Security</span>
-                        <span class="tag">Linux / Unix Commands</span>
+                        <span class="tag">Network Security &amp; Wireshark</span>
+                        <span class="tag">Linux CLI</span>
                         <span class="tag">Incident Response</span>
-                        <span class="tag">Risk Analysis</span>
-                        <span class="tag">Ethical Hacking basics</span>
-                        <span class="tag">Attention to detail</span>
+                        <span class="tag">SIEM Tools (Splunk, Elastic)</span>
+                        <span class="tag">Vulnerability Assessment</span>
+                        <span class="tag">CompTIA Security+</span>
                     </div>
                 </div>
 
                 <!-- Section 4: Earning Opportunities -->
-                <div class="card" style="padding: 32px; margin-bottom: 32px; border: none; box-shadow: none; border-bottom: 1px solid var(--border-color); border-radius: 0;">
-                    <h2 style="margin-bottom: 24px;"><i class="fa-solid fa-money-bill-wave" style="color: green; margin-right: 12px;"></i>Earning Opportunities</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
-                        <div style="background: var(--bg-color); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
-                            <h3 style="margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-building" style="margin-right: 8px;"></i>Corporate Roles</h3>
-                            <p style="font-size: 0.95rem;">Join a Security Operations Center (SOC) as a Tier 1 Analyst monitoring alerts for large enterprises.</p>
+                <div class="card" style="padding: 36px; margin-bottom: 32px;">
+                    <h2 style="margin-bottom: 24px; font-size: 1.5rem;"><i class="fa-solid fa-money-bill-wave" style="color: var(--accent-green); margin-right: 12px;"></i>Earning Opportunities</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+                        <div style="background: var(--bg-surface-elevated); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+                            <h3 style="margin-bottom: 8px; font-size: 1.1rem;"><i class="fa-solid fa-building" style="margin-right: 8px; color: var(--primary-color);"></i>SOC Analyst Roles</h3>
+                            <p style="font-size: 0.925rem; margin: 0;">Join a Security Operations Center (SOC) as a Tier 1 or Tier 2 Analyst monitoring telemetry and investigating alerts 24/7.</p>
                         </div>
-                        <div style="background: var(--bg-color); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
-                            <h3 style="margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-laptop-house" style="margin-right: 8px;"></i>Consulting</h3>
-                            <p style="font-size: 0.95rem;">Work for a cybersecurity firm that gets hired to audit and secure different companies across various industries.</p>
+                        <div style="background: var(--bg-surface-elevated); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+                            <h3 style="margin-bottom: 8px; font-size: 1.1rem;"><i class="fa-solid fa-laptop-house" style="margin-right: 8px; color: var(--accent-purple);"></i>Security Consultancies</h3>
+                            <p style="font-size: 0.925rem; margin: 0;">Work for specialized firms that conduct penetration testing and compliance audits for hospitals, banks, and fintechs.</p>
                         </div>
-                        <div style="background: var(--bg-color); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
-                            <h3 style="margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-bug" style="margin-right: 8px;"></i>Bug Bounties</h3>
-                            <p style="font-size: 0.95rem;">Once highly skilled, earn money legally by finding vulnerabilities in public software via platforms like HackerOne.</p>
+                        <div style="background: var(--bg-surface-elevated); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+                            <h3 style="margin-bottom: 8px; font-size: 1.1rem;"><i class="fa-solid fa-bug" style="margin-right: 8px; color: var(--accent-green);"></i>Bug Bounty Hunting</h3>
+                            <p style="font-size: 0.925rem; margin: 0;">Earn legal monetary bounties by responsibly discovering and reporting software exploits on platforms like HackerOne.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Section 5: Learning Resources -->
-                <div class="card" style="padding: 32px; border: none; box-shadow: none;">
-                    <h2 style="margin-bottom: 8px;"><i class="fa-solid fa-graduation-cap" style="color: var(--primary-color); margin-right: 12px;"></i>Learning Resources</h2>
-                    <p style="margin-bottom: 24px;">Start your journey with this detailed breakdown of the field.</p>
+                <div class="card" style="padding: 36px;">
+                    <h2 style="margin-bottom: 8px; font-size: 1.5rem;"><i class="fa-solid fa-graduation-cap" style="color: var(--primary-color); margin-right: 12px;"></i>Free Learning Tutorial</h2>
+                    <p style="margin-bottom: 20px; font-size: 0.95rem;">Watch this foundational video covering essential cybersecurity careers and concepts.</p>
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/inWWh25TCEo" title="Cybersecurity for Beginners" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
@@ -191,14 +217,48 @@
         </section>
     </main>
 
+    <!-- Modern Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fa-solid fa-compass"></i> Career Navigator
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <div class="logo-icon-wrap">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <span>Career Navigator</span>
+                        <span class="logo-badge">2.0</span>
+                    </a>
+                    <p>Empowering learners worldwide with structured roadmaps, skill blueprints, and practical guidance.</p>
                 </div>
-                <p>Helping people discover skills and career opportunities.</p>
-                <div class="footer-links">
+                <div>
+                    <h4 class="footer-col-title">Related Pathways</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="cloud-engineer.html">Cloud Engineer</a></li>
+                        <li><a href="web-developer.html">Web Developer</a></li>
+                        <li><a href="data-analyst.html">Data Analyst</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Explore</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="mobile-dev.html">Mobile App Developer</a></li>
+                        <li><a href="ui-ux-designer.html">UI/UX Designer</a></li>
+                        <li><a href="../career-ai.html">Career AI</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Platform</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About Vibhoo</a></li>
+                        <li><a href="../contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Career Navigator 2.0. Created by Vibhoo Jain.</p>
+                <div style="display: flex; gap: 20px;">
                     <a href="../index.html">Home</a>
                     <a href="../about.html">About</a>
                     <a href="../contact.html">Contact</a>
@@ -207,6 +267,7 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="../main.js"></script>
 </body>
 </html>
