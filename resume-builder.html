@@ -319,13 +319,46 @@
         @media (max-width: 992px) {
             .builder-workspace {
                 grid-template-columns: 1fr;
+                gap: 24px;
             }
             .builder-form-pane {
                 max-height: none;
                 overflow-y: visible;
+                padding-right: 0;
             }
             .preview-pane-sticky {
                 position: static;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .builder-input-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .resume-paper {
+                padding: 24px 18px !important;
+                min-height: auto;
+            }
+            .resume-paper .paper-contacts {
+                flex-direction: column;
+                gap: 6px !important;
+            }
+            .preview-controls-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+            .template-pills {
+                width: 100%;
+                justify-content: center;
+            }
+            .template-btn {
+                flex: 1;
+                text-align: center;
+            }
+            .form-section-card {
+                padding: 18px 14px;
             }
         }
     </style>

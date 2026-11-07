@@ -1497,7 +1497,7 @@ footer {
 }
 
 /* --------------------------------------------------------------------------
-   15. Responsive Breakpoints
+   15. Responsive & Mobile-First Breakpoints
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .nav-links {
@@ -1508,10 +1508,10 @@ footer {
     width: 100%;
     background: var(--bg-surface);
     flex-direction: column;
-    padding: 24px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    padding: 20px 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
     border-bottom: 1px solid var(--border-color);
-    gap: 12px;
+    gap: 8px;
     align-items: stretch;
   }
 
@@ -1520,8 +1520,9 @@ footer {
   }
 
   .nav-link {
-    padding: 10px 16px;
+    padding: 10px 14px;
     font-size: 0.95rem;
+    border-radius: var(--radius-sm);
   }
 
   .mobile-menu-btn {
@@ -1530,8 +1531,8 @@ footer {
 }
 
 @media (max-width: 992px) {
-  h1 { font-size: 2.75rem; }
-  h2 { font-size: 2rem; }
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.85rem; }
   
   .founder-card {
     grid-template-columns: 1fr;
@@ -1542,29 +1543,196 @@ footer {
     grid-template-columns: 1fr 1fr;
     gap: 36px;
   }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
 }
 
 @media (max-width: 768px) {
-  h1 { font-size: 2.25rem; }
-  h2 { font-size: 1.75rem; }
-  .section { padding: 64px 0; }
-  
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Navbar on Mobile: Keep clean, let logo & theme toggle breathe */
+  .nav-actions .btn {
+    display: none;
+  }
+
+  /* Typography on Mobile */
+  h1 { font-size: 1.95rem !important; line-height: 1.25; }
+  h2 { font-size: 1.45rem !important; line-height: 1.3; }
+  .section { padding: 48px 0; }
+  .section-sm { padding: 36px 0; }
+  .section-header { margin-bottom: 28px; }
+  .section-title { font-size: 1.75rem; }
+
+  /* Hero Section */
+  .hero {
+    padding: 36px 0 28px;
+  }
+  .hero-pill {
+    font-size: 0.775rem;
+    padding: 4px 12px;
+    margin-bottom: 16px;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+  }
+  .hero-title {
+    font-size: 1.95rem !important;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .hero-subtitle {
+    font-size: 0.975rem;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    gap: 10px;
+    max-width: 320px;
+    margin: 0 auto 32px;
+  }
+  .hero-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-stats-bar {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 16px 12px;
+  }
+  .hero-stat-num {
+    font-size: 1.35rem;
+  }
+  .hero-stat-label {
+    font-size: 0.775rem;
+  }
+
+  /* Search & Filter Bar on Mobile */
+  .search-filter-wrapper {
+    padding: 14px 12px;
+    margin-bottom: 24px;
+    gap: 12px;
+  }
+  .search-input {
+    padding: 12px 14px 12px 42px;
+    font-size: 0.9rem;
+  }
+  .search-input-box i {
+    left: 14px;
+    font-size: 0.95rem;
+  }
+  .filter-pills-bar {
+    gap: 6px;
+  }
+  .filter-btn {
+    padding: 5px 12px;
+    font-size: 0.8rem;
+  }
+  .filter-count-badge {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 4px;
+    font-size: 0.8rem;
+  }
+
+  /* Career Cards on Mobile */
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .career-card {
+    padding: 20px 18px;
+  }
+
+  /* Roadmap Timeline on Mobile */
+  .roadmap-list::before {
+    left: 14px;
+  }
+  .roadmap-item {
+    padding-left: 38px;
+    margin-bottom: 24px;
+  }
+  .roadmap-step-badge {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+    box-shadow: 0 0 0 3px var(--bg-surface);
+  }
+  .roadmap-item-card {
+    padding: 16px 14px;
+  }
+  .card {
+    padding: 20px 16px !important;
+  }
+
+  /* Comparison Section on Mobile */
+  .comparison-section {
+    padding: 20px 14px !important;
+    margin-top: 36px !important;
+  }
+  #compare-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  #compare-table-wrap table {
+    min-width: 520px;
+  }
+
+  /* YouTube Course Cards on Mobile */
+  .yt-resource-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .yt-resource-card {
+    padding: 16px 14px;
+  }
+
+  /* Footer on Mobile */
   .footer-top {
     grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 40px;
   }
-  
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+    gap: 12px;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+  .hero-title {
+    font-size: 1.7rem !important;
+  }
   .hero-stats-bar {
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    padding: 20px;
+    gap: 8px;
+    padding: 12px 8px;
   }
-  
-  .search-filter-wrapper {
-    padding: 16px;
+  .hero-stat-num {
+    font-size: 1.2rem;
+  }
+  .hero-stat-label {
+    font-size: 0.725rem;
+  }
+  .logo {
+    font-size: 1.1rem;
+  }
+  .logo-icon-wrap {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+  .card {
+    padding: 16px 12px !important;
   }
 }
