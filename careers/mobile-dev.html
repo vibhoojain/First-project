@@ -205,12 +205,86 @@
                     </div>
                 </div>
 
-                <!-- Section 5: Learning Resources -->
+                <!-- Section 5: Learning Resources & Playlists -->
                 <div class="card" style="padding: 36px;">
-                    <h2 style="margin-bottom: 8px; font-size: 1.5rem;"><i class="fa-solid fa-graduation-cap" style="color: var(--primary-color); margin-right: 12px;"></i>Free Learning Tutorial</h2>
-                    <p style="margin-bottom: 20px; font-size: 0.95rem;">Watch this clear roadmap video explaining how to become a professional mobile developer.</p>
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 8px;">
+                        <h2 style="margin: 0; font-size: 1.5rem;"><i class="fa-solid fa-graduation-cap" style="color: var(--primary-color); margin-right: 12px;"></i>Free YouTube Courses &amp; Playlists</h2>
+                        <span class="yt-type-tag"><i class="fa-brands fa-youtube"></i> 100% Free Resources</span>
+                    </div>
+                    <p style="margin-bottom: 20px; font-size: 0.95rem;">Curated masterclasses and playlists covering cross-platform Flutter/Dart, native Android (Kotlin), and iOS (Swift) mobile development.</p>
+                    
+                    <!-- Featured Master Video -->
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/j_ZbmX2e4n0" title="How to become a mobile developer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/VPvVD8t02U8" title="Flutter Course for Beginners (37-Hour Clean Architecture)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 14px; padding: 10px 16px; background: var(--bg-surface-elevated); border: 1px solid var(--border-color); border-radius: var(--radius); font-size: 0.85rem;">
+                        <span style="color: var(--text-muted);"><i class="fa-solid fa-circle-play" style="color: #ef4444; margin-right: 6px;"></i>Having trouble playing here? Watch directly on YouTube:</span>
+                        <a href="https://www.youtube.com/watch?v=VPvVD8t02U8" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" style="padding: 4px 12px; font-size: 0.8rem;">
+                            <i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Open in YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
+                        </a>
+                    </div>
+
+                    <!-- Curated Free Course & Playlist List -->
+                    <div class="yt-resource-grid">
+                        <!-- Course 1 -->
+                        <div class="yt-resource-card">
+                            <div>
+                                <div class="yt-card-meta">
+                                    <span class="yt-channel-badge"><i class="fa-brands fa-youtube"></i> freeCodeCamp.org</span>
+                                    <span class="yt-type-tag">Full 37-Hour Course</span>
+                                </div>
+                                <h3 style="font-size: 1.05rem; margin-bottom: 6px;">Flutter Course for Beginners (Clean Architecture)</h3>
+                                <p style="font-size: 0.875rem; margin: 0; color: var(--text-muted);">Vandad Nahavandipoor's monumental course teaching Dart fundamentals, Bloc state management, and full app publishing.</p>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=VPvVD8t02U8" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" style="justify-content: center; gap: 6px;">
+                                <i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Watch Free Course <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+                            </a>
+                        </div>
+
+                        <!-- Course 2 -->
+                        <div class="yt-resource-card">
+                            <div>
+                                <div class="yt-card-meta">
+                                    <span class="yt-channel-badge"><i class="fa-brands fa-youtube"></i> The Net Ninja</span>
+                                    <span class="yt-type-tag">Flutter &amp; Dart Playlist</span>
+                                </div>
+                                <h3 style="font-size: 1.05rem; margin-bottom: 6px;">Flutter Complete Tutorial Series</h3>
+                                <p style="font-size: 0.875rem; margin: 0; color: var(--text-muted);">Step-by-step bite-sized playlist covering widget trees, asynchronous requests, Firebase authentication, and responsive design.</p>
+                            </div>
+                            <a href="https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" style="justify-content: center; gap: 6px;">
+                                <i class="fa-solid fa-list-ul" style="color: var(--primary-color);"></i> Open Playlist <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+                            </a>
+                        </div>
+
+                        <!-- Course 3 -->
+                        <div class="yt-resource-card">
+                            <div>
+                                <div class="yt-card-meta">
+                                    <span class="yt-channel-badge"><i class="fa-brands fa-youtube"></i> Philipp Lackner</span>
+                                    <span class="yt-type-tag">Native Android (Kotlin)</span>
+                                </div>
+                                <h3 style="font-size: 1.05rem; margin-bottom: 6px;">Jetpack Compose &amp; Clean Architecture</h3>
+                                <p style="font-size: 0.875rem; margin: 0; color: var(--text-muted);">Modern declarative Android development, Room database caching, coroutines, and dependency injection with Hilt.</p>
+                            </div>
+                            <a href="https://www.youtube.com/playlist?list=PLQkwcJG4YTCSpJ2NLhDTHuq--Xstce51C" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" style="justify-content: center; gap: 6px;">
+                                <i class="fa-solid fa-list-ul" style="color: var(--primary-color);"></i> Open Playlist <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+                            </a>
+                        </div>
+
+                        <!-- Course 4 -->
+                        <div class="yt-resource-card">
+                            <div>
+                                <div class="yt-card-meta">
+                                    <span class="yt-channel-badge"><i class="fa-brands fa-youtube"></i> Sean Allen</span>
+                                    <span class="yt-type-tag">Native iOS (Swift)</span>
+                                </div>
+                                <h3 style="font-size: 1.05rem; margin-bottom: 6px;">iOS Development Course for Beginners</h3>
+                                <p style="font-size: 0.875rem; margin: 0; color: var(--text-muted);">Master SwiftUI, Xcode, Apple Human Interface Guidelines, and build your first iOS app to publish to the App Store.</p>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=comQ1-x2a1Q" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" style="justify-content: center; gap: 6px;">
+                                <i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Watch Free Course <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

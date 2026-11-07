@@ -205,12 +205,86 @@
                     </div>
                 </div>
 
-                <!-- Section 5: Learning Resources -->
+                <!-- Section 5: Learning Resources & Playlists -->
                 <div class="card" style="padding: 36px;">
-                    <h2 style="margin-bottom: 8px; font-size: 1.5rem;"><i class="fa-solid fa-graduation-cap" style="color: var(--primary-color); margin-right: 12px;"></i>Free Learning Tutorial</h2>
-                    <p style="margin-bottom: 20px; font-size: 0.95rem;">Watch this clear introductory guide on how to become a certified Cloud Engineer.</p>
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 8px;">
+                        <h2 style="margin: 0; font-size: 1.5rem;"><i class="fa-solid fa-graduation-cap" style="color: var(--primary-color); margin-right: 12px;"></i>Free YouTube Courses &amp; Playlists</h2>
+                        <span class="yt-type-tag"><i class="fa-brands fa-youtube"></i> 100% Free Resources</span>
+                    </div>
+                    <p style="margin-bottom: 20px; font-size: 0.95rem;">Curated masterclasses and playlists covering Linux server administration, AWS certifications, Docker, and Terraform infrastructure.</p>
+                    
+                    <!-- Featured Master Video -->
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/n3WgeE1D9P8" title="Cloud Engineering for Beginners" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/9pZ2xmsSDdo" title="DevOps &amp; Cloud Engineering Roadmap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 14px; padding: 10px 16px; background: var(--bg-surface-elevated); border: 1px solid var(--border-color); border-radius: var(--radius); font-size: 0.85rem;">
+                        <span style="color: var(--text-muted);"><i class="fa-solid fa-circle-play" style="color: #ef4444; margin-right: 6px;"></i>Having trouble playing here? Watch directly on YouTube:</span>
+                        <a href="https://www.youtube.com/watch?v=9pZ2xmsSDdo" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" style="padding: 4px 12px; font-size: 0.8rem;">
+                            <i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Open in YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
+                        </a>
+                    </div>
+
+                    <!-- Curated Free Course & Playlist List -->
+                    <div class="yt-resource-grid">
+                        <!-- Course 1 -->
+                        <div class="yt-resource-card">
+                            <div>
+                                <div class="yt-card-meta">
+                                    <span class="yt-channel-badge"><i class="fa-brands fa-youtube"></i> TechWorld with Nana</span>
+                                    <span class="yt-type-tag">Full DevOps Bootcamp</span>
+                                </div>
+                                <h3 style="font-size: 1.05rem; margin-bottom: 6px;">DevOps &amp; Cloud Bootcamp for Beginners</h3>
+                                <p style="font-size: 0.875rem; margin: 0; color: var(--text-muted);">Nana's acclaimed foundation covering Linux basics, Git, Docker, Kubernetes, CI/CD pipelines, and Terraform.</p>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=9pZ2xmsSDdo" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" style="justify-content: center; gap: 6px;">
+                                <i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Watch Free Course <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+                            </a>
+                        </div>
+
+                        <!-- Course 2 -->
+                        <div class="yt-resource-card">
+                            <div>
+                                <div class="yt-card-meta">
+                                    <span class="yt-channel-badge"><i class="fa-brands fa-youtube"></i> freeCodeCamp.org</span>
+                                    <span class="yt-type-tag">AWS Solutions Architect</span>
+                                </div>
+                                <h3 style="font-size: 1.05rem; margin-bottom: 6px;">AWS Certified Solutions Architect (SAA-C03)</h3>
+                                <p style="font-size: 0.875rem; margin: 0; color: var(--text-muted);">Andrew Brown's complete 14-hour exam prep course with hands-on console labs for EC2, VPC, S3, and IAM.</p>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=Ia-UEYYR44s" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" style="justify-content: center; gap: 6px;">
+                                <i class="fa-brands fa-youtube" style="color: #ef4444;"></i> Watch Free Course <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+                            </a>
+                        </div>
+
+                        <!-- Course 3 -->
+                        <div class="yt-resource-card">
+                            <div>
+                                <div class="yt-card-meta">
+                                    <span class="yt-channel-badge"><i class="fa-brands fa-youtube"></i> NetworkChuck</span>
+                                    <span class="yt-type-tag">Linux Master Playlist</span>
+                                </div>
+                                <h3 style="font-size: 1.05rem; margin-bottom: 6px;">Linux for Cloud &amp; Hackers Series</h3>
+                                <p style="font-size: 0.875rem; margin: 0; color: var(--text-muted);">Master the Linux command line, bash scripting, SSH tunneling, file permissions, and cloud server setups.</p>
+                            </div>
+                            <a href="https://www.youtube.com/playlist?list=PLIhvC56v63IJIujb5cyE13oLuyORZpdkL" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" style="justify-content: center; gap: 6px;">
+                                <i class="fa-solid fa-list-ul" style="color: var(--primary-color);"></i> Open Playlist <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+                            </a>
+                        </div>
+
+                        <!-- Course 4 -->
+                        <div class="yt-resource-card">
+                            <div>
+                                <div class="yt-card-meta">
+                                    <span class="yt-channel-badge"><i class="fa-brands fa-youtube"></i> TrainWithShubham</span>
+                                    <span class="yt-type-tag">Zero to Hero (Hindi)</span>
+                                </div>
+                                <h3 style="font-size: 1.05rem; margin-bottom: 6px;">Cloud &amp; DevOps Zero to Hero Playlist</h3>
+                                <p style="font-size: 0.875rem; margin: 0; color: var(--text-muted);">Hands-on practical projects building real-world multi-tier applications on AWS using Docker, Jenkins, and Ansible.</p>
+                            </div>
+                            <a href="https://www.youtube.com/playlist?list=PLdpzxOOAlwvIcETug2pLoxMzVDGI89KmK" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" style="justify-content: center; gap: 6px;">
+                                <i class="fa-solid fa-list-ul" style="color: var(--primary-color);"></i> Open Playlist <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

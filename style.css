@@ -210,33 +210,34 @@ p { color: var(--text-muted); font-size: 1.05rem; }
 }
 
 /* --------------------------------------------------------------------------
-   3. Buttons & Interactive Controls
+   3. Buttons & Interactive Controls (Sleek, Modern Pill Design)
    -------------------------------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 24px;
-  border-radius: var(--radius-sm);
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: var(--radius-full);
   font-weight: 600;
-  font-size: 0.975rem;
+  font-size: 0.9rem;
   border: 1px solid transparent;
   cursor: pointer;
   transition: var(--transition);
   text-align: center;
   white-space: nowrap;
+  letter-spacing: -0.01em;
 }
 
 .btn-primary {
   background: var(--gradient-brand);
   color: #ffffff !important;
-  box-shadow: 0 4px 14px 0 var(--primary-glow);
+  box-shadow: 0 3px 12px 0 var(--primary-glow);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px 0 var(--primary-glow);
+  box-shadow: 0 6px 18px 0 var(--primary-glow);
   filter: brightness(1.08);
 }
 
@@ -254,7 +255,7 @@ p { color: var(--text-muted); font-size: 1.05rem; }
 
 .btn-outline {
   background-color: transparent;
-  border: 1.5px solid var(--border-color);
+  border: 1px solid var(--border-color);
   color: var(--text-main);
 }
 
@@ -266,17 +267,21 @@ p { color: var(--text-muted); font-size: 1.05rem; }
 }
 
 .btn-sm {
-  padding: 8px 16px;
-  font-size: 0.875rem;
+  padding: 6px 14px;
+  font-size: 0.825rem;
+  border-radius: var(--radius-full);
 }
 
 .btn-lg {
-  padding: 16px 32px;
-  font-size: 1.1rem;
+  padding: 11px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 /* --------------------------------------------------------------------------
-   4. Navigation Bar
+   4. Navigation Bar (Streamlined, Non-Bulky Layout)
    -------------------------------------------------------------------------- */
 .navbar {
   background-color: var(--bg-surface-glass);
@@ -300,32 +305,33 @@ p { color: var(--text-muted); font-size: 1.05rem; }
 }
 
 .logo {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: var(--text-main);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   letter-spacing: -0.02em;
+  flex-shrink: 0;
 }
 
 .logo-icon-wrap {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
   background: var(--gradient-brand);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 10px var(--primary-glow);
+  font-size: 1rem;
+  box-shadow: 0 3px 8px var(--primary-glow);
 }
 
 .logo-badge {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  padding: 2px 7px;
+  padding: 2px 6px;
   border-radius: var(--radius-full);
   background: var(--accent-purple-light);
   color: var(--accent-purple);
@@ -336,42 +342,41 @@ p { color: var(--text-muted); font-size: 1.05rem; }
 
 .nav-links {
   display: flex;
-  gap: 28px;
+  gap: 4px;
   align-items: center;
 }
 
 .nav-link {
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   position: relative;
-  padding: 8px 0;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
-  color: var(--primary-color);
+  color: var(--text-main);
+  background: var(--bg-surface-elevated);
 }
 
 .nav-link.active {
   color: var(--primary-color);
+  background: var(--primary-light);
   font-weight: 600;
 }
 
 .nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--gradient-brand);
-  border-radius: 2px;
+  display: none;
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 /* Theme Toggle Button */
@@ -379,15 +384,15 @@ p { color: var(--text-muted); font-size: 1.05rem; }
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-color);
   color: var(--text-main);
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: var(--transition);
-  font-size: 1.05rem;
+  font-size: 0.95rem;
 }
 
 .theme-toggle-btn:hover {
@@ -401,10 +406,10 @@ p { color: var(--text-muted); font-size: 1.05rem; }
   display: none;
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-color);
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-sm);
-  font-size: 1.2rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  font-size: 1.1rem;
   cursor: pointer;
   color: var(--text-main);
   align-items: center;
@@ -441,13 +446,13 @@ p { color: var(--text-muted); font-size: 1.05rem; }
   gap: 8px;
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-color);
-  padding: 6px 18px;
+  padding: 5px 14px;
   border-radius: var(--radius-full);
-  font-size: 0.9rem;
+  font-size: 0.825rem;
   font-weight: 500;
   color: var(--text-secondary);
-  margin-bottom: 28px;
-  box-shadow: var(--card-shadow);
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .hero-pill i {
@@ -455,26 +460,29 @@ p { color: var(--text-muted); font-size: 1.05rem; }
 }
 
 .hero-title {
-  margin-bottom: 24px;
-  max-width: 920px;
+  margin-bottom: 20px;
+  max-width: 860px;
   margin-left: auto;
   margin-right: auto;
+  font-size: 3.25rem;
+  letter-spacing: -0.03em;
 }
 
 .hero-subtitle {
-  max-width: 720px;
-  margin: 0 auto 40px;
-  font-size: 1.25rem;
+  max-width: 680px;
+  margin: 0 auto 32px;
+  font-size: 1.1rem;
   color: var(--text-muted);
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
 .hero-cta-group {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 56px;
+  margin-bottom: 44px;
 }
 
 .hero-stats-bar {
@@ -726,7 +734,7 @@ p { color: var(--text-muted); font-size: 1.05rem; }
 .filter-pills-bar {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
@@ -734,9 +742,9 @@ p { color: var(--text-muted); font-size: 1.05rem; }
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-color);
   color: var(--text-secondary);
-  padding: 8px 18px;
+  padding: 6px 15px;
   border-radius: var(--radius-full);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
   transition: var(--transition);
@@ -1204,6 +1212,67 @@ p { color: var(--text-muted); font-size: 1.05rem; }
 }
 
 /* --------------------------------------------------------------------------
+   YouTube Course & Playlist Resources Grid
+   -------------------------------------------------------------------------- */
+.yt-resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.yt-resource-card {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  transition: var(--transition);
+}
+
+.yt-resource-card:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow);
+}
+
+.yt-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.yt-channel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.yt-channel-badge i {
+  color: #ef4444;
+  font-size: 1rem;
+}
+
+.yt-type-tag {
+  font-size: 0.725rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
    12. Forms & Toasts
    -------------------------------------------------------------------------- */
 .form-container {
@@ -1430,6 +1499,36 @@ footer {
 /* --------------------------------------------------------------------------
    15. Responsive Breakpoints
    -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    background: var(--bg-surface);
+    flex-direction: column;
+    padding: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--border-color);
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+}
+
 @media (max-width: 992px) {
   h1 { font-size: 2.75rem; }
   h2 { font-size: 2rem; }
@@ -1450,29 +1549,6 @@ footer {
   h2 { font-size: 1.75rem; }
   .section { padding: 64px 0; }
   
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: var(--nav-height);
-    left: 0;
-    width: 100%;
-    background: var(--bg-surface);
-    flex-direction: column;
-    padding: 24px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid var(--border-color);
-    gap: 18px;
-    align-items: flex-start;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .mobile-menu-btn {
-    display: flex;
-  }
-
   .footer-top {
     grid-template-columns: 1fr;
   }
